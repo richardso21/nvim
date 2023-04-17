@@ -59,6 +59,7 @@ return require("packer").startup(function(use)
       {                                      -- Optional
       "williamboman/mason.nvim",
       run = function()
+        ---@diagnostic disable-next-line: param-type-mismatch
         pcall(vim.cmd, "MasonUpdate")
       end,
     },
@@ -74,13 +75,20 @@ return require("packer").startup(function(use)
 
 -- >>> MISC >>>
 
+-- debugger
+use {
+  "mfussenegger/nvim-dap",
+  "jay-babu/mason-nvim-dap.nvim"
+}
+
+-- commenting
 use "numToStr/Comment.nvim"
 
 -- smooth scrolling
 use "karb94/neoscroll.nvim"
 
--- lsp progress for lualine
-use "arkav/lualine-lsp-progress"
+-- lsp progress 
+use "j-hui/fidget.nvim"
 
 -- indent guides
 use "lukas-reineke/indent-blankline.nvim"
@@ -111,5 +119,8 @@ use {
     }
   end
 }
+
+-- dim inactive windows
+use "levouh/tint.nvim"
 
 end)

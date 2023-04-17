@@ -1,3 +1,12 @@
+-- Buffers
+vim.keymap.set("n", "K", [[:BufferNext<CR>]])
+vim.keymap.set("n", "J", [[:BufferPrevious<CR>]])
+vim.keymap.set("n", "L", [[:BufferMoveNext<CR>]])
+vim.keymap.set("n", "H", [[:BufferMovePrevious<CR>]])
+vim.keymap.set("n", "<leader>qq", [[:BufferClose<CR>]])
+vim.keymap.set("n", "<leader>bb", [[:BufferPick<CR>]])
+vim.keymap.set("n", "<leader>bq", [[:BufferPickDelete<CR>]])
+
 require("barbar").setup {
   -- auto_hide = true,
 
@@ -12,8 +21,8 @@ require("barbar").setup {
     maximum_padding = math.huge,
   },
 
-  sidebar_filetypes = {
-    NvimTree = true
-  }
+  -- sidebar_filetypes = {
+  --   NvimTree = true
+  -- }
 
 }

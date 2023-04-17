@@ -14,6 +14,9 @@ end)
 -- find variables
 vim.keymap.set('n', '<leader>fv', builtin.treesitter, {})
 
+-- find buffers
+vim.keymap.set('n', '<leader>bs', builtin.buffers, {})
+
 -- find HELP!
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
