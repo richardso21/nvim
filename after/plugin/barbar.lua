@@ -1,5 +1,5 @@
 require("barbar").setup {
-  auto_hide = true,
+  -- auto_hide = true,
 
   icons = {
     diagnostics = {
