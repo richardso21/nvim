@@ -6,7 +6,11 @@ vim.keymap.set("n", "<leader><leader>", [[:source<CR>]])
 -- Packer sync
 vim.keymap.set("n", "<leader>ps", [[:PackerSync<CR>]])
 
+-- yank to system clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", [["*y<CR>]])
+
 -- save w/ and w/o formatting
+vim.keymap.set("n", "<leader>s", [[:w<CR>]])
 vim.keymap.set("n", "<leader>ww", [[:w<CR>]])
 vim.keymap.set("n", "<leader>wW", [[:noa w<CR>]])
 

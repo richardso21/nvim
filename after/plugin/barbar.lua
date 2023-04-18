@@ -9,15 +9,18 @@ vim.keymap.set("n", "<leader>bq", [[:BufferPickDelete<CR>]])
 
 require("barbar").setup {
   -- auto_hide = true,
+  hide = {
+    extensions = true
+  },
 
   icons = {
     diagnostics = {
-      [vim.diagnostic.severity.ERROR] = {enabled = true, icon = '!'},
-      [vim.diagnostic.severity.WARN] = {enabled = false, icon = '?'},
+      [vim.diagnostic.severity.ERROR] = { enabled = true, icon = '!' },
+      [vim.diagnostic.severity.WARN] = { enabled = false, icon = '?' },
     },
-    inactive = {separator = {left = '', right = ''}},
-    pinned = {button = ''},
-    separator = {left = '', right = ''},
+    inactive = { separator = { left = '', right = '' } },
+    pinned = { button = '' },
+    separator = { left = '', right = '' },
     maximum_padding = math.huge,
   },
 
