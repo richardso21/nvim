@@ -61,7 +61,7 @@ end)
 lsp.setup()
 
 -- envoke fidget (lsp progress) setup
-require("fidget").setup()
+-- require("fidget").setup()
 
 -- setup debugger
 require("mason-nvim-dap").setup({

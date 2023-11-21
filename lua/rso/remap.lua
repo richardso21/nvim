@@ -16,6 +16,7 @@ vim.keymap.set("n", "<leader>wW", [[:noa w<CR>]])
 
 -- quitting vim O_O
 vim.keymap.set("n", "<leader>qQ", [[:qa<CR>]])
+vim.keymap.set("n", "<leader>qZ", [[:qa!<CR>]])
 vim.keymap.set("n", "<M-q>", [[:qa<CR>]])
 
 -- toggle spell check

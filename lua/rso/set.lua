@@ -1,4 +1,4 @@
-vim.g.termguicolors = true
+-- vim.g.termguicolors = true
 vim.o.hidden = true
 
 -- number line

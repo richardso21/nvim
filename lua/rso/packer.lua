@@ -12,7 +12,7 @@ return require("packer").startup(function(use)
     requires = { { "nvim-lua/plenary.nvim" } }
   }
 
-  -- color scheme
+  -- -- color scheme
   use {
     "bluz71/vim-nightfly-colors",
     as = "nightfly",
@@ -88,7 +88,7 @@ return require("packer").startup(function(use)
   use "karb94/neoscroll.nvim"
 
   -- lsp progress
-  use "j-hui/fidget.nvim"
+  -- use "j-hui/fidget.nvim"
 
   -- indent guides
   use "lukas-reineke/indent-blankline.nvim"
