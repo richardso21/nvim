@@ -1,6 +1,6 @@
 require("rso.remap")
-require("rso.packer")
+require("rso.lazy")
 require("rso.set")
 
-
-print("what da dog doin")
+-- require("notify")("what da dog doin !?", "warn")
+print("what da dog doin !?")

@@ -1,7 +1,3 @@
--- Bubbles config for lualine
--- Author: lokesh-krishna
--- MIT license, see LICENSE for more details.
-
 -- don't need to show mode or cmd on command bar
 vim.opt.showmode = false
 vim.opt.showcmd = false
@@ -9,7 +5,7 @@ vim.opt.showcmd = false
 require('lualine').setup {
   options = {
     theme = 'nightfly',
-    component_separators = '|',
+    component_separators = '',
     section_separators = { left = '', right = '' },
   },
   sections = {
@@ -29,7 +25,7 @@ require('lualine').setup {
         sections = { 'warn' },
       },
     },
-    lualine_x = { 'lsp-progress' },
+    lualine_x = {},
     lualine_y = { 'filetype', 'progress' },
     lualine_z = {
       { 'location' },

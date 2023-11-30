@@ -1,30 +1,36 @@
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "javascript", "typescript", "java", "python" },
+local configs = require("nvim-treesitter.configs")
 
-  -- Install parsers synchronously (only applied to `ensure_installed`)
+configs.setup({
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "html", "python", "go" },
   sync_install = false,
+  highlight = { enable = true },
+  indent = { enable = true },
+})
 
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
+-- This module contains a number of default definitions
+local rainbow_delimiters = require("rainbow-delimiters")
 
+---@type rainbow_delimiters.config
+vim.g.rainbow_delimiters = {
+  strategy = {
+    [''] = rainbow_delimiters.strategy['global'],
+    vim = rainbow_delimiters.strategy['local'],
+  },
+  query = {
+    [''] = 'rainbow-delimiters',
+    lua = 'rainbow-blocks',
+  },
+  priority = {
+    [''] = 110,
+    lua = 210,
+  },
   highlight = {
-    enable = true,
-
-    -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-    disable = function(lang, buf)
-      local max_filesize = 1500 * 1024 -- 1500 KB = 1.5 MB
-      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-      if ok and stats and stats.size > max_filesize then
-        return true
-      end
-    end,
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
+    -- 'RainbowDelimiterRed',
+    'RainbowDelimiterYellow',
+    'RainbowDelimiterBlue',
+    'RainbowDelimiterOrange',
+    'RainbowDelimiterGreen',
+    'RainbowDelimiterViolet',
+    'RainbowDelimiterCyan',
   },
 }

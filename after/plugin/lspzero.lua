@@ -1,0 +1,67 @@
+require("neodev").setup {}
+
+local lsp_zero = require('lsp-zero')
+
+-- (thank you ThePrimeagen)
+
+lsp_zero.on_attach(function(client, bufnr)
+  local opts = { buffer = bufnr, remap = false }
+  -- see :help lsp-zero-keybindings
+  -- to learn the available actions
+  -- lsp_zero.default_keymaps({buffer = bufnr})
+  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "<leader>lw", function() vim.lsp.buf.workspace_symbol() end, opts)
+  vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>ln", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("n", "<leader>ld", function() vim.diagnostic.open_float() end, opts)
+  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "<M-k>", function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set("i", "<M-k>", function() vim.lsp.buf.signature_help() end, opts)
+
+  -- auto-format on save by default
+  lsp_zero.buffer_autoformat()
+end)
+
+vim.keymap.set("n", "<leader>lm", [[:Mason<CR>]])
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {},
+  handlers = {
+    lsp_zero.default_setup,
+  },
+})
+
+local cmp = require('cmp')
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_mappings = cmp.mapping.preset.insert({
+  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+  ['<CR>'] = cmp.mapping.confirm({
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = true
+  }),
+  ['<Tab>'] = cmp.mapping.confirm({
+    select = true
+  }),
+  ["<C-Space>"] = cmp.mapping.complete(),
+  ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+  ["<C-d>"] = cmp.mapping.scroll_docs(4),
+})
+
+
+-- cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
+
+---@diagnostic disable-next-line: missing-fields
+cmp.setup({
+  sources = {
+    { name = 'path' },
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lua' },
+  },
+  formatting = lsp_zero.cmp_format(),
+  mapping = cmp_mappings
+})
