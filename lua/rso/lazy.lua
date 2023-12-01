@@ -81,7 +81,10 @@ require("lazy").setup({
 
   -- Git (Fugitive)
   "tpope/vim-fugitive",
-  "lewis6991/gitsigns.nvim",
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {} -- required for it to actually init
+  },
 
   -- UI wowzers
   "nvim-tree/nvim-web-devicons",
