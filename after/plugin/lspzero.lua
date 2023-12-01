@@ -4,11 +4,8 @@ local lsp_zero = require('lsp-zero')
 
 -- (thank you ThePrimeagen)
 
-lsp_zero.on_attach(function(client, bufnr)
+lsp_zero.on_attach(function(_, bufnr)
   local opts = { buffer = bufnr, remap = false }
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  -- lsp_zero.default_keymaps({buffer = bufnr})
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "<leader>lw", function() vim.lsp.buf.workspace_symbol() end, opts)
   vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end, opts)

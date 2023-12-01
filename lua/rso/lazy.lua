@@ -138,6 +138,17 @@ require("lazy").setup({
       vim.o.timeoutlen = 300
     end
   },
+
+  -- Terminal
+  {
+    "akinsho/toggleterm.nvim",
+    tag = '*',
+    config = true,
+    opts = {
+      open_mapping = [[<c-\>]],
+      direction = 'float'
+    }
+  }
 })
 
 vim.keymap.set("n", "<leader>z", function() vim.cmd("Lazy") end)
