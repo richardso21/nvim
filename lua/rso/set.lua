@@ -25,6 +25,9 @@ vim.opt.smartindent = true
 -- no wraps
 vim.opt.wrap = false
 
+-- persistent undo
+vim.opt.undofile = true
+
 -- Fix cursor change on iTerm
 vim.cmd [[
   au VimEnter,VimResume * set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50

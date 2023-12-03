@@ -46,6 +46,7 @@ wk.register({
     name = "+find",
     f = "find file",
     g = "find file (git tracked)",
+    p = "find recent/prev files",
     t = "find text",
     v = "find variables",
     h = "find help!"
@@ -56,7 +57,8 @@ wk.register({
     w = "code workspace symbols",
     r = "code references",
     n = "code rename",
-    a = "code action"
+    a = "code action",
+    m = "mason"
   },
   w = {
     name = "+write",
@@ -68,8 +70,8 @@ wk.register({
   },
   q = {
     name = "+quit",
-    q = "quit buffer.",
-    f = "quit buffer!",
+    q = "close buffer.",
+    f = "close buffer!",
     w = "close current window",
     Q = "quit vim.",
     Z = "quit vim!",
@@ -77,7 +79,8 @@ wk.register({
   o = {
     name = "+toggles",
     h = "toggle highlight",
-    s = "toggle spellcheck"
+    s = "toggle spellcheck",
+    i = "toggle illuminate under cursor"
   },
   z = "lazy"
 

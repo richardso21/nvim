@@ -28,6 +28,7 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate"
   },
+  "nvim-treesitter/nvim-treesitter-context",
   "HiPhish/rainbow-delimiters.nvim",
 
   -- Telescope
@@ -48,6 +49,7 @@ require("lazy").setup({
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/nvim-cmp",
   "L3MON4D3/LuaSnip",
+  { "folke/trouble.nvim", opts = {} },
   "folke/neodev.nvim",
 
   -- Bracket/Parenthesis/Brace Pairs
@@ -123,6 +125,12 @@ require("lazy").setup({
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
   },
+
+  -- Variable illuminate
+  "RRethy/vim-illuminate",
+
+  -- Undo Tree
+  "mbbill/undotree",
 
   -- Session Persist
   {

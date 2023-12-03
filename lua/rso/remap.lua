@@ -57,7 +57,7 @@ vim.keymap.set("n", "<C-+>", [[<C-w>|<C-w>_]])
 -- Closing windows
 vim.keymap.set("n", "<leader>qw", [[<C-w>q<CR>]])
 
--- MISC --
+-- MISC (Toggles) --
 
 -- toggle spell check
 vim.keymap.set("n", "<leader>os", function()
@@ -69,4 +69,8 @@ end)
 vim.keymap.set("n", "<leader>oh", function()
   vim.o.hls = not vim.o.hls
   print("highlight: " .. tostring(vim.o.hls))
+end)
+
+vim.keymap.set("n", "<leader>oi", function()
+  require('illuminate').toggle()
 end)

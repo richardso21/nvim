@@ -3,6 +3,8 @@ local builtin = require('telescope.builtin')
 -- find files
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 
+vim.keymap.set('n', '<leader>fp', builtin.oldfiles, {}) -- { only_cwd = true })
+
 -- find git files
 vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
 
