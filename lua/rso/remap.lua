@@ -10,6 +10,9 @@ vim.keymap.set("n", "<leader>qZ", function() vim.cmd("qa!") end)
 -- yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["*y<CR>]])
 
+-- open links with gx without netrw
+vim.keymap.set("n", 'gx', [[:execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]])
+
 -- save w/ and w/o formatting
 vim.keymap.set("n", "<leader>ww", function() vim.cmd("w") end)
 vim.keymap.set("n", "<leader>wW", function() vim.cmd("noa w") end)
