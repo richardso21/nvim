@@ -34,8 +34,10 @@ end)
 -- WINDOWS --
 
 -- Creating windows
-vim.keymap.set("n", "<C-|>", [[<C-w>v<CR>]])
-vim.keymap.set("n", "<C-_>", [[<C-w>s<CR>]])
+-- vim.keymap.set("n", "<C-|>", [[<C-w>v<CR>]])
+-- vim.keymap.set("n", "<C-_>", [[<C-w>s<CR>]])
+vim.keymap.set("n", "<leader>nt", [[<C-w>v<CR>]])
+vim.keymap.set("n", "<leader>ns", [[<C-w>s<CR>]])
 
 -- Focusing b/w windows
 vim.keymap.set("n", "<C-h>", [[<C-w>h]])
@@ -54,11 +56,14 @@ vim.keymap.set("n", "<C-up>", [[<C-w>+]])
 vim.keymap.set("n", "<C-down>", [[<C-w>-]])
 vim.keymap.set("n", "<C-left>", [[<C-w><]])
 vim.keymap.set("n", "<C-right>", [[<C-w>>]])
-vim.keymap.set("n", "<C-=>", [[<C-w>=]])
-vim.keymap.set("n", "<C-+>", [[<C-w>|<C-w>_]])
+-- vim.keymap.set("n", "<C-=>", [[<C-w>=]])
+-- vim.keymap.set("n", "<C-+>", [[<C-w>|<C-w>_]])
+vim.keymap.set("n", "<leader>ne", [[<C-w>=]])
+vim.keymap.set("n", "<leader>nn", [[<C-w>|<C-w>_]])
 
 -- Closing windows
-vim.keymap.set("n", "<leader>qw", [[<C-w>q<CR>]])
+-- vim.keymap.set("n", "<leader>qw", [[<C-w>q<CR>]])
+vim.keymap.set("n", "<leader>nq", [[<C-w>q<CR>]])
 
 -- MISC (Toggles) --
 

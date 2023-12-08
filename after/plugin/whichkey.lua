@@ -72,7 +72,7 @@ wk.register({
     name = "+quit",
     q = "close buffer.",
     f = "close buffer!",
-    w = "close current window",
+    -- w = "close current window",
     Q = "quit vim.",
     Z = "quit vim!",
   },
@@ -81,6 +81,14 @@ wk.register({
     h = "toggle highlight",
     s = "toggle spellcheck",
     i = "toggle illuminate under cursor"
+  },
+  n = {
+    name = "+window",
+    t = "new vert window",
+    s = "new horiz window",
+    e = "equalize all window sizes",
+    n = "maximize current window",
+    q = "close current window"
   },
   z = "lazy"
 
