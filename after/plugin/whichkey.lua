@@ -74,7 +74,7 @@ wk.register({
     f = "close buffer!",
     -- w = "close current window",
     Q = "quit vim.",
-    Z = "quit vim!",
+    F = "quit vim!",
   },
   o = {
     name = "+toggles",

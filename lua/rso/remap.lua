@@ -5,7 +5,7 @@ vim.g.mapleader = " "
 
 -- quitting vim O_O
 vim.keymap.set("n", "<leader>qQ", function() vim.cmd("qa") end)
-vim.keymap.set("n", "<leader>qZ", function() vim.cmd("qa!") end)
+vim.keymap.set("n", "<leader>qF", function() vim.cmd("qa!") end)
 
 -- yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["*y<CR>]])
