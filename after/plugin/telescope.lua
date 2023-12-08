@@ -16,8 +16,12 @@ end)
 -- find variables
 vim.keymap.set('n', '<leader>fv', builtin.treesitter, {})
 
+-- find sessions
+vim.keymap.set('n', '<leader>fs', require("auto-session.session-lens").search_session, {})
+
 -- find buffers
-vim.keymap.set('n', '<leader>bs', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+
 
 -- find HELP!
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})

@@ -49,7 +49,10 @@ require("lazy").setup({
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/nvim-cmp",
   "L3MON4D3/LuaSnip",
-  { "folke/trouble.nvim", opts = {} },
+  {
+    "folke/trouble.nvim",
+    opts = {}
+  },
   "folke/neodev.nvim",
 
   -- LaTeX
@@ -159,7 +162,7 @@ require("lazy").setup({
   -- Terminal
   {
     "akinsho/toggleterm.nvim",
-    tag = '*',
+    version = '*',
     config = true,
     opts = {
       open_mapping = [[<c-\>]],

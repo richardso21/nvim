@@ -6,8 +6,8 @@ wk.register({
   K = "next buffer",
   J = "prev buffer",
   -- windows
-  ["<C-|>"] = "create vert split",
-  ["<C-_>"] = "create horiz split",
+  -- ["<C-|>"] = "create vert split",
+  -- ["<C-_>"] = "create horiz split",
   ["<C-h>"] = "focus left window",
   ["<C-j>"] = "focus bottom window",
   ["<C-k>"] = "focus top window",
@@ -16,8 +16,8 @@ wk.register({
   ["<C-down>"] = "vert shrink window",
   ["<C-left>"] = "horiz shrink window",
   ["<C-right>"] = "horiz grow window",
-  ["<C-=>"] = "equalize window size",
-  ["<C-+>"] = "maximize current window",
+  -- ["<C-=>"] = "equalize window size",
+  -- ["<C-+>"] = "maximize current window",
   -- lsp
   ["<M-k>"] = "code hover",
   g = {
@@ -39,14 +39,17 @@ wk.register({
   b = {
     name = "+buffer",
     b = "buffer selection",
-    s = "buffer search",
-    q = "buffer CLOSE selection",
+    q = "buffer close selection",
+    Q = "buffer close others",
+    p = "buffer toggle pin",
   },
   f = {
     name = "+find",
     f = "find file",
     g = "find file (git tracked)",
     p = "find recent/prev files",
+    s = "find sessions",
+    b = "find buffers",
     t = "find text",
     v = "find variables",
     h = "find help!"
