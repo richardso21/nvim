@@ -52,6 +52,12 @@ require("lazy").setup({
   { "folke/trouble.nvim", opts = {} },
   "folke/neodev.nvim",
 
+  -- LaTeX
+  {
+    "lervag/vimtex",
+    lazy = false,
+  },
+
   -- Bracket/Parenthesis/Brace Pairs
   {
     "windwp/nvim-autopairs",
