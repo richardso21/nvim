@@ -168,7 +168,15 @@ require("lazy").setup({
       open_mapping = [[<c-\>]],
       direction = 'float'
     }
-  }
+  },
+
+  -- Github Copilot
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    opts = {}
+  },
 })
 
 vim.keymap.set("n", "<leader>z", function() vim.cmd("Lazy") end)
