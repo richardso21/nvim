@@ -48,7 +48,11 @@ require("lazy").setup({
   "neovim/nvim-lspconfig",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/nvim-cmp",
-  "L3MON4D3/LuaSnip",
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = { "rafamadriz/friendly-snippets" },
+  },
+  'saadparwaiz1/cmp_luasnip',
   {
     "folke/trouble.nvim",
     opts = {}
@@ -149,6 +153,14 @@ require("lazy").setup({
       auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
     },
   },
+  -- {
+  --   "folke/persistence.nvim",
+  --   event = "BufReadPre", -- this will only start session saving when an actual file was opened
+  --   opts = {},
+  --   init = function()
+  --     require("persistence").load()
+  --   end
+  -- },
 
   -- Which Key
   {

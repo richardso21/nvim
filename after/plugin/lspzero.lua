@@ -4,6 +4,8 @@ local lsp_zero = require('lsp-zero')
 
 local trouble = require('trouble')
 
+require("luasnip.loaders.from_vscode").lazy_load() -- vscode snippets
+
 -- (thank you ThePrimeagen)
 
 lsp_zero.on_attach(function(_, bufnr)
@@ -60,6 +62,7 @@ cmp.setup({
     { name = 'path' },
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
+    { name = 'luasnip' },
   },
   formatting = lsp_zero.cmp_format(),
   mapping = cmp_mappings
@@ -71,3 +74,12 @@ for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+-- supress ltex spam
+require('lspconfig').ltex.setup {
+  settings = {
+    ltex = {
+      checkFrequency = "save"
+    }
+  }
+}
