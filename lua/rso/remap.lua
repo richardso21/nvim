@@ -3,6 +3,16 @@ vim.g.mapleader = " "
 -- vim source
 -- vim.keymap.set("n", "<leader><leader>", function() vim.cmd("source") end)
 
+-- open config folder
+vim.keymap.set("n", "<leader>zp", function()
+  local as = require('auto-session')
+  as.AutoSaveSession()
+  vim.cmd("cd ~/.config/nvim/")
+  vim.cmd("%bd!")
+  as.AutoRestoreSession()
+  print("config directory")
+end)
+
 -- quitting vim O_O
 vim.keymap.set("n", "<leader>qQ", function() vim.cmd("qa") end)
 vim.keymap.set("n", "<leader>qF", function() vim.cmd("qa!") end)

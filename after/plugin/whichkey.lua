@@ -75,7 +75,6 @@ wk.register({
     name = "+quit",
     q = "close buffer.",
     f = "close buffer!",
-    -- w = "close current window",
     Q = "quit vim.",
     F = "quit vim!",
   },
@@ -93,7 +92,11 @@ wk.register({
     n = "maximize current window",
     q = "close current window"
   },
-  z = "lazy"
+  z = {
+    name = "zzz",
+    z = "lazy",
+    p = "config"
+  }
 
 }, { prefix = "<leader>" })
 

@@ -153,14 +153,6 @@ require("lazy").setup({
       auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
     },
   },
-  -- {
-  --   "folke/persistence.nvim",
-  --   event = "BufReadPre", -- this will only start session saving when an actual file was opened
-  --   opts = {},
-  --   init = function()
-  --     require("persistence").load()
-  --   end
-  -- },
 
   -- Which Key
   {
@@ -191,4 +183,4 @@ require("lazy").setup({
   },
 })
 
-vim.keymap.set("n", "<leader>z", function() vim.cmd("Lazy") end)
+vim.keymap.set("n", "<leader>zz", function() vim.cmd("Lazy") end)
