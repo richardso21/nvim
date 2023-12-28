@@ -181,6 +181,14 @@ require("lazy").setup({
     event = "InsertEnter",
     opts = {}
   },
+
+  -- Discord Rich Presence
+  {
+    "andweeb/presence.nvim",
+    opts = {
+      main_image = "file",
+    }
+  }
 })
 
 vim.keymap.set("n", "<leader>zz", function() vim.cmd("Lazy") end)

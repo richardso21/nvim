@@ -28,7 +28,10 @@ vim.opt.wrap = false
 -- persistent undo
 vim.opt.undofile = true
 
--- Fix cursor change on iTerm
+-- confirm before quit
+vim.opt.confirm = true
+
+-- Fix cursor change on terminal
 vim.cmd [[
   au VimEnter,VimResume * set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
     \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor

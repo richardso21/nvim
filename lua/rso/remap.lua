@@ -3,6 +3,9 @@ vim.g.mapleader = " "
 -- vim source
 -- vim.keymap.set("n", "<leader><leader>", function() vim.cmd("source") end)
 
+-- toggle undotree
+vim.keymap.set("n", "<leader>u", function() vim.cmd("UndotreeToggle") end)
+
 -- open config folder
 vim.keymap.set("n", "<leader>zp", function()
   local as = require('auto-session')

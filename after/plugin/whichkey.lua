@@ -36,6 +36,7 @@ wk.register({
 wk.register({
   y = "clipboard yank",
   e = "file explorer",
+  u = "undo tree",
   b = {
     name = "+buffer",
     b = "buffer selection",
