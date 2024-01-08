@@ -4,31 +4,41 @@ vim.g.mapleader = " "
 -- vim.keymap.set("n", "<leader><leader>", function() vim.cmd("source") end)
 
 -- toggle undotree
-vim.keymap.set("n", "<leader>u", function() vim.cmd("UndotreeToggle") end)
+vim.keymap.set("n", "<leader>u", function()
+	vim.cmd("UndotreeToggle")
+end)
 
 -- open config folder
 vim.keymap.set("n", "<leader>zp", function()
-  local as = require('auto-session')
-  as.AutoSaveSession()
-  vim.cmd("cd ~/.config/nvim/")
-  vim.cmd("%bd!")
-  as.AutoRestoreSession()
-  print("config directory")
+	local as = require("auto-session")
+	as.AutoSaveSession()
+	vim.cmd("cd ~/.config/nvim/")
+	vim.cmd("%bd!")
+	as.AutoRestoreSession()
+	print("config directory")
 end)
 
 -- quitting vim O_O
-vim.keymap.set("n", "<leader>qQ", function() vim.cmd("qa") end)
-vim.keymap.set("n", "<leader>qF", function() vim.cmd("qa!") end)
+vim.keymap.set("n", "<leader>qQ", function()
+	vim.cmd("qa")
+end)
+vim.keymap.set("n", "<leader>qF", function()
+	vim.cmd("qa!")
+end)
 
 -- yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["*y<CR>]])
 
 -- open links with gx without netrw
-vim.keymap.set("n", 'gx', [[:execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]])
+vim.keymap.set("n", "gx", [[:execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]])
 
 -- save w/ and w/o formatting
-vim.keymap.set("n", "<leader>ww", function() vim.cmd("w") end)
-vim.keymap.set("n", "<leader>wW", function() vim.cmd("noa w") end)
+vim.keymap.set("n", "<leader>ww", function()
+	vim.cmd("w")
+end)
+vim.keymap.set("n", "<leader>wW", function()
+	vim.cmd("noa w")
+end)
 
 -- tab and s-tab behavior
 vim.keymap.set("v", "<tab>", ">")
@@ -38,10 +48,10 @@ vim.keymap.set("i", "<s-tab>", "<C-d>")
 -- BUFFERS --
 
 vim.keymap.set("n", "<leader>qq", function()
-  require("bufdelete").bufdelete(0)
+	require("bufdelete").bufdelete(0)
 end)
 vim.keymap.set("n", "<leader>qf", function()
-  require("bufdelete").bufdelete(0, true) -- force delete
+	require("bufdelete").bufdelete(0, true) -- force delete
 end)
 
 -- WINDOWS --
@@ -82,16 +92,16 @@ vim.keymap.set("n", "<leader>nq", [[<C-w>q<CR>]])
 
 -- toggle spell check
 vim.keymap.set("n", "<leader>os", function()
-  vim.o.spell = not vim.o.spell
-  print("spell: " .. tostring(vim.o.spell))
+	vim.o.spell = not vim.o.spell
+	print("spell: " .. tostring(vim.o.spell))
 end)
 
 -- toggle text find highlight
 vim.keymap.set("n", "<leader>oh", function()
-  vim.o.hls = not vim.o.hls
-  print("highlight: " .. tostring(vim.o.hls))
+	vim.o.hls = not vim.o.hls
+	print("highlight: " .. tostring(vim.o.hls))
 end)
 
 vim.keymap.set("n", "<leader>oi", function()
-  require('illuminate').toggle()
+	require("illuminate").toggle()
 end)
