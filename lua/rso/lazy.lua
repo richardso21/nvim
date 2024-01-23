@@ -48,6 +48,7 @@ require("lazy").setup({
 	"neovim/nvim-lspconfig",
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/nvim-cmp",
+	"onsails/lspkind.nvim",
 	{
 		"L3MON4D3/LuaSnip",
 		dependencies = { "rafamadriz/friendly-snippets" },
@@ -83,12 +84,12 @@ require("lazy").setup({
 		"numToStr/Comment.nvim",
 		opts = {
 			toggler = {
-				line = "<leader>ml",
-				block = "<leader>mk",
+				line = "<leader>m",
+				block = "<leader>M",
 			},
 			opleader = {
-				line = "ml",
-				block = "mk",
+				line = "m",
+				block = "M",
 			},
 			mappings = {
 				extra = false,
@@ -111,6 +112,16 @@ require("lazy").setup({
 	"nvim-tree/nvim-web-devicons",
 	"MunifTanjim/nui.nvim",
 	"folke/noice.nvim",
+	{
+		"rcarriga/nvim-notify",
+		opts = {
+			top_down = false,
+		},
+	},
+	{
+		"stevearc/dressing.nvim",
+		opts = {},
+	},
 
 	-- Mode Line
 	"nvim-lualine/lualine.nvim",
@@ -124,14 +135,6 @@ require("lazy").setup({
 		"levouh/tint.nvim",
 		opts = {
 			tint = -55,
-		},
-	},
-
-	-- Scrolling
-	{
-		"karb94/neoscroll.nvim",
-		opts = {
-			easing_function = "sine",
 		},
 	},
 

@@ -33,10 +33,10 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["*y<CR>]])
 vim.keymap.set("n", "gx", [[:execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]])
 
 -- save w/ and w/o formatting
-vim.keymap.set("n", "<leader>ww", function()
+vim.keymap.set("n", "<leader>w", function()
 	vim.cmd("w")
 end)
-vim.keymap.set("n", "<leader>wW", function()
+vim.keymap.set("n", "<leader>W", function()
 	vim.cmd("noa w")
 end)
 

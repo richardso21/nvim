@@ -1,8 +1,8 @@
 require("lint").linters_by_ft = {
 	markdown = { "markdownlint" },
 	python = { "ruff" },
-	javascript = { "eslint_d " },
-	typescript = { "eslint_d " },
+	javascript = { "quick-lint-js" },
+	typescript = { "quick-lint-js" },
 }
 
 -- lint on save

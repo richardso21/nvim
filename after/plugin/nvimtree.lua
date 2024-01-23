@@ -3,6 +3,10 @@ vim.keymap.set("n", "<leader>e", function()
 	vim.cmd("NvimTreeToggle")
 end)
 
+vim.keymap.set("n", "<leader>E", function()
+	vim.cmd("NvimTreeFindFileToggle")
+end)
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 

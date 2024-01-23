@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 require("neodev").setup({})
 
 local lsp_zero = require("lsp-zero")
@@ -74,7 +75,6 @@ local cmp_mappings = cmp.mapping.preset.insert({
 -- cmp_mappings['<Tab>'] = nil
 cmp_mappings["<S-Tab>"] = nil
 
----@diagnostic disable-next-line: missing-fields
 cmp.setup({
 	sources = {
 		{ name = "path" },
@@ -82,7 +82,25 @@ cmp.setup({
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
 	},
-	formatting = lsp_zero.cmp_format(),
+	-- formatting = lsp_zero.cmp_format(),
+	window = {
+		completion = {
+			col_offset = -3,
+			side_padding = 0,
+			winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+		},
+	},
+	formatting = {
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 70 })(entry, vim_item)
+			local strings = vim.split(kind.kind, "%s", { trimempty = true })
+			kind.kind = " " .. (strings[1] or "") .. " "
+			kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+			return kind
+		end,
+	},
 	mapping = cmp_mappings,
 })
 
@@ -114,17 +132,10 @@ require("lspconfig").clangd.setup({
 })
 
 -- python lsp setup
-require("lspconfig").pylsp.setup({
+require("lspconfig").pyright.setup({
 	settings = {
-		pylsp = {
-			plugins = {
-				-- disable linters and formatters
-				autopep8 = { enabled = false },
-				pyflakes = { enabled = false },
-				pycodestyle = { enabled = false },
-				jedi_completion = { fuzzy = true },
-				rope_autoimport = { enabled = true },
-			},
+		pyright = {
+			disableOrganizeImports = true, --have isort for that
 		},
 	},
 })

@@ -22,6 +22,9 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
+-- remove `~`
+vim.opt.fillchars = { eob = " " }
+
 -- no wraps
 vim.opt.wrap = false
 

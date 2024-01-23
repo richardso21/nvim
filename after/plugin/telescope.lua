@@ -1,3 +1,4 @@
+local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 
 -- find files
@@ -24,3 +25,6 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 
 -- find HELP!
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+
+-- find previous notifications
+vim.keymap.set("n", "<leader>fn", telescope.extensions.notify.notify, {})

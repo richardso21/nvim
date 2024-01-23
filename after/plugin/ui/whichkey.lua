@@ -36,6 +36,7 @@ wk.register({
 wk.register({
 	y = "clipboard yank",
 	e = "file explorer",
+	E = "file explorer find file",
 	u = "undo tree",
 	b = {
 		name = "+buffer",
@@ -64,14 +65,16 @@ wk.register({
 		a = "code action",
 		m = "mason",
 	},
-	w = {
-		name = "+write",
-		w = "write",
-		W = "write w/o formatting",
-	},
-	m = {
-		name = "+comment",
-	},
+	w = "write",
+	W = "write w/o formatting",
+	-- w = {
+	-- 	name = "+write",
+	-- 	w = "write",
+	-- 	W = "write w/o formatting",
+	-- },
+	-- m = {
+	-- 	name = "+comment",
+	-- },
 	q = {
 		name = "+quit",
 		q = "close buffer.",
