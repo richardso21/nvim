@@ -19,7 +19,10 @@ require("lazy").setup({
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd([[colorscheme nightfly]])
+			vim.g.nightflyWinSeparator = 2
+			vim.g.nightflyCursorColor = true
+			vim.g.nightflyTerminalColors = false
+			vim.cmd.colorscheme("nightfly")
 		end,
 	},
 
