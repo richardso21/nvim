@@ -125,6 +125,14 @@ require("lazy").setup({
 
 	-- Mode Line
 	"nvim-lualine/lualine.nvim",
+	-- {
+	-- 	"freddiehaddad/feline.nvim",
+	-- 	opts = {},
+	-- 	config = function(_, opts)
+	-- 		require("feline").setup()
+	-- 		require("feline").use_theme("nightfly")
+	-- 	end,
+	-- },
 
 	-- Buffers
 	"akinsho/bufferline.nvim",
