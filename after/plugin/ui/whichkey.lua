@@ -55,6 +55,7 @@ wk.register({
 		t = "find text",
 		v = "find variables",
 		h = "find help!",
+		n = "find notifications",
 	},
 	l = {
 		name = "+lang",

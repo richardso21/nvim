@@ -119,6 +119,9 @@ require("lazy").setup({
 		"rcarriga/nvim-notify",
 		opts = {
 			top_down = false,
+			timeout = 2500,
+			fps = 60,
+			-- max_width = 70,
 		},
 	},
 	{
