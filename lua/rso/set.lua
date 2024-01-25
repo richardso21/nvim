@@ -22,6 +22,9 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
+vim.opt.mousemoveevent = true
+vim.opt.mouse = "a"
+
 -- remove `~`
 vim.opt.fillchars = { eob = " " }
 

@@ -131,14 +131,6 @@ require("lazy").setup({
 
 	-- Mode Line
 	"nvim-lualine/lualine.nvim",
-	-- {
-	-- 	"freddiehaddad/feline.nvim",
-	-- 	opts = {},
-	-- 	config = function(_, opts)
-	-- 		require("feline").setup()
-	-- 		require("feline").use_theme("nightfly")
-	-- 	end,
-	-- },
 
 	-- Buffers
 	"akinsho/bufferline.nvim",
@@ -166,7 +158,8 @@ require("lazy").setup({
 	"RRethy/vim-illuminate",
 
 	-- Undo Tree
-	"mbbill/undotree",
+	-- "mbbill/undotree",
+	"simnalamburt/vim-mundo",
 
 	-- Session Persist
 	{
