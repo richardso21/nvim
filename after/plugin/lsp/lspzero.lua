@@ -110,3 +110,30 @@ for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+-- python lsp setup
+require("lspconfig").pyright.setup({
+	settings = {
+		pyright = {
+			disableOrganizeImports = true, --have isort for that
+		},
+	},
+})
+
+-- clang: 'multiple different client offset_encodings detected'
+require("lspconfig").clangd.setup({
+	capabilities = require("cmp_nvim_lsp").default_capabilities(),
+	cmd = {
+		"clangd",
+		"--offset-encoding=utf-16",
+	},
+})
+
+-- supress ltex spam
+require("lspconfig").ltex.setup({
+	settings = {
+		ltex = {
+			checkFrequency = "save",
+		},
+	},
+})
