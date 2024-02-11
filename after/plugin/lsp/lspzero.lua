@@ -93,7 +93,10 @@ cmp.setup({
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
-			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 70 })(entry, vim_item)
+			local kind = require("lspkind").cmp_format({
+				mode = "symbol_text",
+				maxwidth = 70,
+			})(entry, vim_item)
 			local strings = vim.split(kind.kind, "%s", { trimempty = true })
 			kind.kind = " " .. (strings[1] or "") .. " "
 			kind.menu = "    (" .. (strings[2] or "") .. ")"
@@ -130,10 +133,10 @@ require("lspconfig").clangd.setup({
 })
 
 -- supress ltex spam
-require("lspconfig").ltex.setup({
-	settings = {
-		ltex = {
-			checkFrequency = "save",
-		},
-	},
-})
+-- require("lspconfig").ltex.setup({
+-- 	settings = {
+-- 		ltex = {
+-- 			checkFrequency = "save",
+-- 		},
+-- 	},
+-- })

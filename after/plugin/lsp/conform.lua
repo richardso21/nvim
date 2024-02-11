@@ -10,6 +10,7 @@ require("conform").setup({
 		go = { "gofumpt" },
 		c = { "clang_format" },
 		cpp = { "clang_format" },
+		java = { "google-java-format" },
 	},
 })
 

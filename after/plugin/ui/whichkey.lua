@@ -88,6 +88,7 @@ wk.register({
 		h = "toggle highlight",
 		s = "toggle spellcheck",
 		i = "toggle illuminate under cursor",
+		c = "toggle github copilot auto-suggestions",
 	},
 	n = {
 		name = "+window",

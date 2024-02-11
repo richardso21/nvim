@@ -31,13 +31,13 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 	},
-	"nvim-treesitter/nvim-treesitter-context",
+	-- "nvim-treesitter/nvim-treesitter-context",
 	"HiPhish/rainbow-delimiters.nvim",
 
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.4",
+		tag = "0.1.5",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 
@@ -129,6 +129,29 @@ require("lazy").setup({
 		opts = {},
 	},
 
+	-- scroll bar
+	-- "dstein64/nvim-scrollview",
+
+	-- scroll animation
+	{
+		"karb94/neoscroll.nvim",
+		opts = {
+			easing_function = "sine",
+			pre_hook = function()
+				vim.opt.eventignore:append({
+					"WinScrolled",
+					"CursorMoved",
+				})
+			end,
+			post_hook = function()
+				vim.opt.eventignore:remove({
+					"WinScrolled",
+					"CursorMoved",
+				})
+			end,
+		},
+	},
+
 	-- Mode Line
 	"nvim-lualine/lualine.nvim",
 
@@ -184,6 +207,7 @@ require("lazy").setup({
 		"akinsho/toggleterm.nvim",
 		version = "*",
 		config = true,
+		keys = { [[<c-\>]] },
 		opts = {
 			open_mapping = [[<c-\>]],
 			direction = "float",
@@ -195,12 +219,17 @@ require("lazy").setup({
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
 		event = "InsertEnter",
-		opts = {},
+		opts = {
+			suggestion = {
+				auto_trigger = true,
+			},
+		},
 	},
 
 	-- Discord Rich Presence
 	{
 		"andweeb/presence.nvim",
+		lazy = false,
 		opts = {
 			main_image = "file",
 		},

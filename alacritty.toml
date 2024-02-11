@@ -44,7 +44,7 @@ shape = "Beam"
 size = 17
 
 [font.normal]
-family = "MesloLGS Nerd Font Propo"
+family = "MesloLGSDZ Nerd Font Mono"
 
 [[keyboard.bindings]]
 chars = "\u001B[46;5u"
@@ -77,7 +77,7 @@ key = "Backslash"
 mods = "Control|Shift"
 
 [mouse]
-hide_when_typing = true
+hide_when_typing = false
 
 [scrolling]
 history = 1000

@@ -104,4 +104,13 @@ end)
 
 vim.keymap.set("n", "<leader>oi", function()
 	require("illuminate").toggle()
+	print("illuminate: " .. tostring(not require("illuminate").is_paused()))
+end)
+--
+-- toggle copilot suggestions
+local copilot_suggestions_enabled = true
+vim.keymap.set("n", "<leader>oc", function()
+	require("copilot.suggestion").toggle_auto_trigger()
+	copilot_suggestions_enabled = not copilot_suggestions_enabled
+	print("copilot suggestions: " .. tostring(copilot_suggestions_enabled))
 end)
