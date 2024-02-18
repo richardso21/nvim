@@ -13,6 +13,7 @@ configs.setup({
 		"html",
 		"python",
 		"go",
+		"regex",
 	},
 	sync_install = false,
 	highlight = { enable = true },
