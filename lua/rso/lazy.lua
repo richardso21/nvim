@@ -113,8 +113,8 @@ require("lazy").setup({
 
 	-- UI wowzers
 	"nvim-tree/nvim-web-devicons",
-	"MunifTanjim/nui.nvim",
 	"folke/noice.nvim",
+	"MunifTanjim/nui.nvim",
 	{
 		"rcarriga/nvim-notify",
 		opts = {
@@ -227,12 +227,22 @@ require("lazy").setup({
 	},
 
 	-- Discord Rich Presence
+	-- {
+	-- 	"IogaMaster/neocord",
+	-- 	-- event = "VeryLazy",
+	-- 	lazy = false,
+	-- 	dir = "~/scratch/neocord",
+	-- 	opts = {
+	-- 		global_timer = true,
+	-- 		show_idle = false,
+	-- 		-- idle_timeout = 5,
+	-- 		-- log_level = "debug",
+	-- 	},
+	-- },
+
+	-- Multi-select (VSCode Cmd/Ctrl+D)
 	{
-		"andweeb/presence.nvim",
-		lazy = false,
-		opts = {
-			main_image = "file",
-		},
+		"mg979/vim-visual-multi",
 	},
 })
 
