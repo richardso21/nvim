@@ -4,6 +4,7 @@ require("conform").setup({
 		python = { "isort", "black" },
 		javascript = { "prettierd" },
 		typescript = { "prettierd" },
+		vue = { "prettierd" },
 		html = { "prettierd" },
 		css = { "prettierd" },
 		markdown = { "prettierd" },
@@ -11,6 +12,7 @@ require("conform").setup({
 		c = { "clang_format" },
 		cpp = { "clang_format" },
 		java = { "google-java-format" },
+		yaml = { "yamlfmt" },
 	},
 })
 

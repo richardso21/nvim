@@ -31,7 +31,7 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 	},
-	-- "nvim-treesitter/nvim-treesitter-context",
+	"nvim-treesitter/nvim-treesitter-context",
 	"HiPhish/rainbow-delimiters.nvim",
 
 	-- Telescope
