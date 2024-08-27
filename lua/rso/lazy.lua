@@ -113,7 +113,23 @@ require("lazy").setup({
 
 	-- UI wowzers
 	"nvim-tree/nvim-web-devicons",
-	"folke/noice.nvim",
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			routes = {
+				{
+					filter = {
+						event = "notify",
+						find = "No information available",
+					},
+					opts = {
+						skip = true,
+					},
+				},
+			},
+		},
+	},
 	"MunifTanjim/nui.nvim",
 	{
 		"rcarriga/nvim-notify",
@@ -243,6 +259,33 @@ require("lazy").setup({
 	-- Multi-select (VSCode Cmd/Ctrl+D)
 	{
 		"mg979/vim-visual-multi",
+	},
+
+	-- Large Files
+	{
+		"LunarVim/bigfile.nvim",
+	},
+
+	-- Markdown preview support
+	-- {
+	-- 	"OXY2DEV/markview.nvim",
+	-- 	lazy = false,
+	-- },
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		opts = {
+			heading = {
+				backgrounds = {
+					"RenderMarkdownH1Bg",
+					"RenderMarkdownH2Bg",
+					"RenderMarkdownCode",
+					"RenderMarkdownCode",
+					"RenderMarkdownCode",
+					"RenderMarkdownCode",
+					-- nightfly H3-H6 bg colors are atrocious
+				},
+			},
+		},
 	},
 })
 

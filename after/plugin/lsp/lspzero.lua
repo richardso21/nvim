@@ -30,10 +30,10 @@ lsp_zero.on_attach(function(_, bufnr)
 		trouble.toggle()
 	end, opts)
 	vim.keymap.set("n", "[d", function()
-		vim.diagnostic.goto_next()
+		vim.diagnostic.jump({ count = -1, float = true })
 	end, opts)
 	vim.keymap.set("n", "]d", function()
-		vim.diagnostic.goto_prev()
+		vim.diagnostic.jump({ count = 1, float = true })
 	end, opts)
 	vim.keymap.set("n", "<M-k>", function()
 		vim.lsp.buf.hover()
@@ -108,11 +108,17 @@ cmp.setup({
 })
 
 -- pretty icons in gutter
-local signs = { Error = "", Warn = "", Hint = "", Info = "" }
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
+local signs = { E = "", W = "", N = "", I = "" }
+vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.E] = signs.E,
+			[vim.diagnostic.severity.W] = signs.W,
+			[vim.diagnostic.severity.N] = signs.N,
+			[vim.diagnostic.severity.I] = signs.I,
+		},
+	},
+})
 
 -- python lsp setup
 require("lspconfig").pyright.setup({
