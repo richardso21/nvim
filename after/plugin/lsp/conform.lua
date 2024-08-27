@@ -13,6 +13,7 @@ require("conform").setup({
 		cpp = { "clang_format" },
 		java = { "google-java-format" },
 		yaml = { "yamlfmt" },
+		typst = { "typstyle" },
 	},
 })
 

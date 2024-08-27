@@ -146,3 +146,11 @@ require("lspconfig").clangd.setup({
 -- 		},
 -- 	},
 -- })
+
+-- single file mode for typst tinymist
+require("lspconfig").tinymist.setup({
+	single_file_support = true,
+	root_dir = function()
+		return vim.fn.expand("%:p:h") -- use current file's directory
+	end,
+})
