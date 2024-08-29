@@ -137,16 +137,13 @@ require("lazy").setup({
 			top_down = false,
 			timeout = 2500,
 			fps = 60,
-			-- max_width = 70,
+			max_width = 70,
 		},
 	},
 	{
 		"stevearc/dressing.nvim",
 		opts = {},
 	},
-
-	-- scroll bar
-	-- "dstein64/nvim-scrollview",
 
 	-- scroll animation
 	{
@@ -242,20 +239,6 @@ require("lazy").setup({
 		},
 	},
 
-	-- Discord Rich Presence
-	-- {
-	-- 	"IogaMaster/neocord",
-	-- 	-- event = "VeryLazy",
-	-- 	lazy = false,
-	-- 	dir = "~/scratch/neocord",
-	-- 	opts = {
-	-- 		global_timer = true,
-	-- 		show_idle = false,
-	-- 		-- idle_timeout = 5,
-	-- 		-- log_level = "debug",
-	-- 	},
-	-- },
-
 	-- Multi-select (VSCode Cmd/Ctrl+D)
 	{
 		"mg979/vim-visual-multi",
@@ -267,26 +250,13 @@ require("lazy").setup({
 	},
 
 	-- Markdown preview support
-	-- {
-	-- 	"OXY2DEV/markview.nvim",
-	-- 	lazy = false,
-	-- },
 	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		opts = {
-			heading = {
-				backgrounds = {
-					"RenderMarkdownH1Bg",
-					"RenderMarkdownH2Bg",
-					"RenderMarkdownCode",
-					"RenderMarkdownCode",
-					"RenderMarkdownCode",
-					"RenderMarkdownCode",
-					-- nightfly H3-H6 bg colors are atrocious
-				},
-			},
-		},
+		"OXY2DEV/markview.nvim",
+		lazy = false,
 	},
+
+	-- surround
+	"tpope/vim-surround",
 })
 
 vim.keymap.set("n", "<leader>zz", function()
