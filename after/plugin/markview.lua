@@ -14,3 +14,11 @@ require("markview").setup({
 		shift_width = 0,
 	},
 })
+
+-- switch indent to 2 for markdown files
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		vim.bo.shiftwidth = 2
+	end,
+})

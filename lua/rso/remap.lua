@@ -102,11 +102,18 @@ vim.keymap.set("n", "<leader>oh", function()
 	print("highlight: " .. tostring(vim.o.hls))
 end)
 
+-- togle illumination (highlighting of all instances of a word)
 vim.keymap.set("n", "<leader>oi", function()
 	require("illuminate").toggle()
 	print("illuminate: " .. tostring(not require("illuminate").is_paused()))
 end)
---
+
+-- toggle wrapping
+vim.keymap.set("n", "<leader>ow", function()
+	vim.wo.wrap = not vim.wo.wrap
+	print("wrap: " .. tostring(vim.wo.wrap))
+end)
+
 -- toggle copilot suggestions
 local copilot_suggestions_enabled = true
 vim.keymap.set("n", "<leader>oc", function()

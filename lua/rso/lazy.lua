@@ -247,6 +247,11 @@ require("lazy").setup({
 	-- Large Files
 	{
 		"LunarVim/bigfile.nvim",
+		opts = {
+			-- if a code file is over 250KB, it's probably a huge json or log file,
+			-- disable advanced features
+			filesize = 0.25,
+		},
 	},
 
 	-- Markdown preview support

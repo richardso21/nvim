@@ -37,6 +37,10 @@ vim.opt.undofile = true
 -- confirm before quit
 vim.opt.confirm = true
 
+-- ignore + smart casing for search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 -- Fix cursor change on terminal
 vim.cmd([[
   au VimEnter,VimResume * set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
