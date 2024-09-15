@@ -121,10 +121,18 @@ vim.diagnostic.config({
 })
 
 -- python lsp setup
-require("lspconfig").pyright.setup({
+require("lspconfig").pylsp.setup({
 	settings = {
-		pyright = {
-			disableOrganizeImports = true, --have isort for that
+		pylsp = {
+			plugins = {
+				-- ruff and isort for formatting
+				pycodestyle = { enabled = false },
+				flake8 = { enabled = false },
+				pyflakes = { enabled = false },
+				pylint = { enabled = false },
+				yapf = { enabled = false },
+				isort = { enabled = false },
+			},
 		},
 	},
 })

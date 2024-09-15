@@ -1,8 +1,8 @@
 local configs = require("nvim-treesitter.configs")
 
+---@diagnostic disable-next-line: missing-fields
 configs.setup({
 	auto_install = true,
-	ignore_install = {},
 	ensure_installed = {
 		"c",
 		"lua",
@@ -38,7 +38,6 @@ vim.g.rainbow_delimiters = {
 		lua = 210,
 	},
 	highlight = {
-		-- 'RainbowDelimiterRed',
 		"RainbowDelimiterYellow",
 		"RainbowDelimiterBlue",
 		"RainbowDelimiterOrange",

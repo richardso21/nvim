@@ -22,6 +22,7 @@ require("lazy").setup({
 			vim.g.nightflyWinSeparator = 2
 			vim.g.nightflyCursorColor = true
 			vim.g.nightflyTerminalColors = false
+			vim.g.nightflyVirtualTextColor = true
 			vim.cmd.colorscheme("nightfly")
 		end,
 	},
@@ -242,6 +243,12 @@ require("lazy").setup({
 	-- Multi-select (VSCode Cmd/Ctrl+D)
 	{
 		"mg979/vim-visual-multi",
+		init = function()
+			vim.g.VM_maps = {
+				["Add Cursor Down"] = "<C-S-Down>",
+				["Add Cursor Up"] = "<C-S-Up>",
+			}
+		end,
 	},
 
 	-- Large Files
@@ -262,6 +269,13 @@ require("lazy").setup({
 
 	-- surround
 	"tpope/vim-surround",
+
+	-- Discord Rich Presence
+	{
+		"vyfor/cord.nvim",
+		build = "./build || .\\build",
+		event = "VeryLazy",
+	},
 })
 
 vim.keymap.set("n", "<leader>zz", function()

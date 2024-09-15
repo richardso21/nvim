@@ -41,6 +41,15 @@ vim.opt.confirm = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- directory name in title
+vim.opt.title = true
+vim.opt.titlelen = 0 -- do not shorten title
+-- set title string to nvim + name of current workspace directory
+vim.opt.titlestring = "nvim " .. vim.fn.fnamemodify(vim.loop.cwd(), ":t")
+
+-- disable swap files (I ~usually~ save frequently)
+vim.opt.swapfile = false
+
 -- Fix cursor change on terminal
 vim.cmd([[
   au VimEnter,VimResume * set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50

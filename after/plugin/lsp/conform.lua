@@ -1,19 +1,20 @@
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
-		python = { "isort", "black" },
+		python = { "isort", "ruff_format" },
 		javascript = { "prettierd" },
 		typescript = { "prettierd" },
 		vue = { "prettierd" },
 		html = { "prettierd" },
 		css = { "prettierd" },
-		markdown = { "prettierd" },
+		markdown = { "markdownlint" },
 		go = { "gofumpt" },
 		c = { "clang_format" },
 		cpp = { "clang_format" },
 		java = { "google-java-format" },
 		yaml = { "yamlfmt" },
 		typst = { "typstyle" },
+		tex = { "latexindent" },
 	},
 })
 
