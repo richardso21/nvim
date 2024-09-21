@@ -38,34 +38,39 @@ require("lazy").setup({
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.5",
+		branch = "0.1.x",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 
 	-- LSP & Autocomplete
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v3.x",
-	},
-	"williamboman/mason.nvim",
+	{ "VonHeikemen/lsp-zero.nvim", branch = "v4.x", lazy = true, config = false },
+	{ "williamboman/mason.nvim", lazy = false, config = true },
 	"williamboman/mason-lspconfig.nvim",
-	"neovim/nvim-lspconfig",
+	{
+		"neovim/nvim-lspconfig",
+		cmd = { "LspInfo", "LspInstall", "LspStart" },
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
+		},
+	},
 	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/nvim-cmp",
+	{ "hrsh7th/nvim-cmp", event = "InsertEnter" },
 	"onsails/lspkind.nvim",
 	{
 		"L3MON4D3/LuaSnip",
 		dependencies = { "rafamadriz/friendly-snippets" },
 	},
 	"saadparwaiz1/cmp_luasnip",
-	{
-		"folke/trouble.nvim",
-		opts = {},
-	},
-	"folke/neodev.nvim",
 
 	-- Formatting
-	"stevearc/conform.nvim",
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+	},
 
 	-- Linting
 	"mfussenegger/nvim-lint",
@@ -117,19 +122,6 @@ require("lazy").setup({
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		opts = {
-			routes = {
-				{
-					filter = {
-						event = "notify",
-						find = "No information available",
-					},
-					opts = {
-						skip = true,
-					},
-				},
-			},
-		},
 	},
 	"MunifTanjim/nui.nvim",
 	{
@@ -195,7 +187,6 @@ require("lazy").setup({
 	"RRethy/vim-illuminate",
 
 	-- Undo Tree
-	-- "mbbill/undotree",
 	"simnalamburt/vim-mundo",
 
 	-- Session Persist

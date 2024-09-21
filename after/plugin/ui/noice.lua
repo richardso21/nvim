@@ -1,4 +1,15 @@
 require("noice").setup({
+	routes = {
+		{ -- hacky way to prevent `No information available` spam
+			filter = {
+				event = "notify",
+				find = "No information available",
+			},
+			opts = {
+				skip = true,
+			},
+		},
+	},
 	lsp = {
 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 		progress = {
