@@ -260,13 +260,6 @@ require("lazy").setup({
 
 	-- surround
 	"tpope/vim-surround",
-
-	-- Discord Rich Presence
-	{
-		"vyfor/cord.nvim",
-		build = "./build || .\\build",
-		event = "VeryLazy",
-	},
 })
 
 vim.keymap.set("n", "<leader>zz", function()
