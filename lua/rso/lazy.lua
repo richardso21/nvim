@@ -241,6 +241,12 @@ require("lazy").setup({
 
 	-- surround
 	"tpope/vim-surround",
+
+	-- aerial view
+	{
+		"stevearc/aerial.nvim",
+		opts = {},
+	},
 })
 
 vim.keymap.set("n", "<leader>zz", function()
