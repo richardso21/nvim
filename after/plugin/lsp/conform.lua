@@ -7,6 +7,7 @@ require("conform").setup({
 		vue = { "prettierd" },
 		html = { "prettierd" },
 		css = { "prettierd" },
+		json = { "prettierd" },
 		markdown = { "markdownlint" },
 		go = { "gofumpt" },
 		c = { "clang_format" },
@@ -16,12 +17,5 @@ require("conform").setup({
 		typst = { "typstyle" },
 		tex = { "latexindent" },
 	},
-})
-
--- format on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function(args)
-		require("conform").format({ bufnr = args.buf })
-	end,
+	format_on_save = true,
 })

@@ -143,18 +143,6 @@ require("lazy").setup({
 		"karb94/neoscroll.nvim",
 		opts = {
 			easing_function = "sine",
-			pre_hook = function()
-				vim.opt.eventignore:append({
-					"WinScrolled",
-					"CursorMoved",
-				})
-			end,
-			post_hook = function()
-				vim.opt.eventignore:remove({
-					"WinScrolled",
-					"CursorMoved",
-				})
-			end,
 		},
 	},
 
@@ -243,14 +231,7 @@ require("lazy").setup({
 	},
 
 	-- Large Files
-	{
-		"LunarVim/bigfile.nvim",
-		opts = {
-			-- if a code file is over 250KB, it's probably a huge json or log file,
-			-- disable advanced features
-			filesize = 0.25,
-		},
-	},
+	"LunarVim/bigfile.nvim",
 
 	-- Markdown preview support
 	{
