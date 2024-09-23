@@ -26,8 +26,9 @@ vim.keymap.set("n", "<leader>qF", function()
 	vim.cmd("qa!")
 end)
 
--- yank to system clipboard
+-- yank to and paste from system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["*y<CR>]])
+vim.keymap.set({ "n" }, "<leader>p", [["*p]])
 
 -- open links with gx without netrw
 vim.keymap.set("n", "gx", [[:execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]])

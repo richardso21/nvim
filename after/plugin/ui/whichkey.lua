@@ -59,6 +59,7 @@ wk.add({
 	{ "<leader>oi", desc = "toggle illuminate under cursor" },
 	{ "<leader>os", desc = "toggle spellcheck" },
 	{ "<leader>ow", desc = "toggle word wrapping" },
+	{ "<leader>p", desc = "clipboard paste" },
 	{ "<leader>q", group = "quit" },
 	{ "<leader>qF", desc = "quit vim!" },
 	{ "<leader>qQ", desc = "quit vim." },
