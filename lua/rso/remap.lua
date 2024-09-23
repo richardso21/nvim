@@ -115,15 +115,7 @@ vim.keymap.set("n", "<leader>ow", function()
 	print("wrap: " .. tostring(vim.wo.wrap))
 end)
 
--- toggle copilot suggestions
-local copilot_suggestions_enabled = true
+-- toggle ~~copilot~~ supermaven suggestions
 vim.keymap.set("n", "<leader>oc", function()
-	-- require("copilot.suggestion").toggle_auto_trigger()
-	if copilot_suggestions_enabled then
-		require("copilot.command").disable()
-	else
-		require("copilot.command").enable()
-	end
-	copilot_suggestions_enabled = not copilot_suggestions_enabled
-	print("copilot suggestions: " .. tostring(copilot_suggestions_enabled))
+	require("supermaven-nvim.api").toggle()
 end)

@@ -207,14 +207,14 @@ require("lazy").setup({
 		},
 	},
 
-	-- Github Copilot
+	-- AI Autocomplete
 	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
+		"supermaven-inc/supermaven-nvim",
 		event = "InsertEnter",
 		opts = {
-			suggestion = {
-				auto_trigger = true,
+			keymaps = {
+				accept_suggestion = "<M-l>",
+				accept_word = "<M-j>",
 			},
 		},
 	},

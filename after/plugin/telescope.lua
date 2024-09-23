@@ -10,8 +10,9 @@ vim.keymap.set("n", "<leader>fp", builtin.oldfiles, {}) -- { only_cwd = true })
 vim.keymap.set("n", "<leader>fg", builtin.git_files, {})
 
 -- find text
-vim.keymap.set("n", "<leader>ft", function()
-	builtin.grep_string({ search = vim.fn.input("Grep Text > ") })
+vim.keymap.set("n", "<leader>ft", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fT", function()
+	builtin.grep_string({ search = vim.fn.input("Grep Text") })
 end)
 
 -- find variables
