@@ -27,7 +27,6 @@ end)
 
 require("bufferline").setup({
 	options = {
-		separator_style = "slope",
 		diagnostics = "nvim_lsp",
 	},
 })

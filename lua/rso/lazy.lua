@@ -144,6 +144,8 @@ require("lazy").setup({
 		opts = {
 			easing_function = "sine",
 		},
+		-- if using neovide, disable neoscroll
+		cond = not vim.g.neovide,
 	},
 
 	-- Mode Line
@@ -235,8 +237,15 @@ require("lazy").setup({
 
 	-- Markdown preview support
 	{
-		"OXY2DEV/markview.nvim",
-		lazy = false,
+		"MeanderingProgrammer/render-markdown.nvim",
+		opts = {
+			heading = {
+				backgrounds = {
+					"RenderMarkdownH1Bg",
+					"RenderMarkdownH2Bg",
+				},
+			},
+		},
 	},
 
 	-- surround

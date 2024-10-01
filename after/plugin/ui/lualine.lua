@@ -1,3 +1,38 @@
+-- https://github.com/nvim-lualine/lualine.nvim/issues/335#issuecomment-916759033
+local custom_fname = require("lualine.components.filename"):extend()
+local highlight = require("lualine.highlight")
+local default_status_colors = { saved = "#E6E1CF", modified = "#EBC48D" }
+
+function custom_fname:init(options)
+	custom_fname.super.init(self, options)
+	self.status_colors = {
+		saved = highlight.create_component_highlight_group(
+			{ fg = default_status_colors.saved },
+			"filename_status_saved",
+			self.options
+		),
+		modified = highlight.create_component_highlight_group(
+			{ fg = default_status_colors.modified, gui = "bold" },
+			"filename_status_modified",
+			self.options
+		),
+	}
+	if self.options.color == nil then
+		self.options.color = ""
+	end
+end
+
+function custom_fname:update_status()
+	local data = custom_fname.super.update_status(self)
+	data = highlight.component_format_highlight(
+		vim.bo.modified and self.status_colors.modified or self.status_colors.saved
+	) .. data
+	return data
+end
+
+require("lualine").setup({
+	lualine_c = { custom_fname },
+})
 -- don't need to show mode or cmd on command bar
 vim.opt.showmode = false
 vim.opt.showcmd = false
@@ -42,18 +77,21 @@ local theme = {
 require("lualine").setup({
 	options = {
 		theme = theme,
-		component_separators = "",
-		section_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
 	},
 	sections = {
 		lualine_a = {
 			{ "mode" },
 		},
 		lualine_b = {
-			{ "filename", file_status = false },
 			"branch",
+			{
+				custom_fname,
+				file_status = false,
+				path = 1,
+			},
 		},
-		lualine_c = { { "filename", path = 1 } },
+		lualine_c = { "aerial" },
 		lualine_x = { "diagnostics", "diff" },
 		lualine_y = { "filetype" },
 		lualine_z = {
