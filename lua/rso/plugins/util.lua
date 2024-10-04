@@ -31,8 +31,7 @@ return {
 	},
 
 	-- File Explorer
-	{ "echasnovski/mini.files", opts = {} },
-	-- "nvim-tree/nvim-tree.lua",
+	"nvim-tree/nvim-tree.lua",
 
 	-- Git (Fugitive)
 	"tpope/vim-fugitive",
