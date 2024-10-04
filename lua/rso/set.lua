@@ -10,7 +10,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.cursorline = true
 
 -- column guide
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "80,120"
 
 -- prevent cursor from being all the way up/down
 vim.opt.scrolloff = 8
