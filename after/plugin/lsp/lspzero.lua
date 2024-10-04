@@ -2,23 +2,30 @@ local lsp_zero = require("lsp-zero")
 
 require("luasnip.loaders.from_vscode").lazy_load() -- vscode snippets
 
+-- link NormalFloat to Normal hl group (for hover docs/signature help and diagnostics)
+vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+
 -- lsp_attach is where you enable features that only work
 -- if there is a language server active in the file
-local lsp_attach = function(client, bufnr)
+local lsp_attach = function(_, bufnr)
 	local opts = { buffer = bufnr }
 
-	vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-	vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-	vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
-	vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-	vim.keymap.set("n", "<M-k>", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-	vim.keymap.set("i", "<M-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
-	vim.keymap.set("n", "<leader>ln", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-	vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-	vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
-	vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
-	vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+	vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
+	vim.keymap.set("n", "<M-k>", vim.lsp.buf.hover, opts)
+	vim.keymap.set("i", "<M-k>", vim.lsp.buf.signature_help, opts)
+	vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, opts)
+	vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, opts)
+	vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, opts)
+	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 end
+
+lsp_zero.ui({
+	float_border = "rounded",
+})
 
 lsp_zero.extend_lspconfig({
 	sign_text = true,
@@ -105,18 +112,22 @@ local toggle_completion = function()
 	end
 end
 
+local cmp_select_behavior = { behavior = cmp.SelectBehavior.Select }
+
 local mappings = cmp.mapping.preset.insert({
 	-- `Enter` key to confirm completion
-	["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.replace, select = false }),
+	["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.replace, select = true }),
 
 	["<Tab>"] = vim.schedule_wrap(function(fallback)
 		if cmp.visible() and has_words_before() then
-			cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+			cmp.select_next_item(cmp_select_behavior)
 		else
 			fallback()
 		end
 	end),
-	["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
+	["<S-Tab>"] = cmp.mapping.select_prev_item(cmp_select_behavior),
+	["<C-n>"] = cmp.mapping.select_next_item(cmp_select_behavior),
+	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select_behavior),
 
 	-- Ctrl+Space to trigger completion menu
 	["<C-Space>"] = toggle_completion,
@@ -131,6 +142,10 @@ local mappings = cmp.mapping.preset.insert({
 })
 
 cmp.setup({
+	window = {
+		documentation = cmp.config.window.bordered(),
+		completion = cmp.config.window.bordered(),
+	},
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },

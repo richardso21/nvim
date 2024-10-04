@@ -81,7 +81,12 @@ require("lualine").setup({
 	},
 	sections = {
 		lualine_a = {
-			{ "mode" },
+			{
+				"mode",
+				fmt = function(str)
+					return str:sub(1, 3)
+				end,
+			},
 		},
 		lualine_b = {
 			"branch",
