@@ -46,6 +46,19 @@ size = 17
 [font.normal]
 family = "MesloLGSDZ Nerd Font Mono"
 
+[font.bold]
+family = "MesloLGSDZ Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "MesloLGSDZ Nerd Font Mono"
+style = "Italic"
+
+[font.bold_italic]
+family = "MesloLGSDZ Nerd Font Mono"
+style = "Bold Italic"
+
+
 [[keyboard.bindings]]
 chars = "\u001B[46;5u"
 key = "Period"

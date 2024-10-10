@@ -75,4 +75,10 @@ wk.add({
 	{ "<leader>zz", desc = "lazy" },
 })
 
-wk.setup({})
+wk.setup({
+	win = {
+		border = "rounded",
+		title = false,
+		padding = { 0, 0 },
+	},
+})
