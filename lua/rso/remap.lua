@@ -1,12 +1,13 @@
 vim.g.mapleader = " "
 
--- vim source
--- vim.keymap.set("n", "<leader><leader>", function() vim.cmd("source") end)
-
 -- toggle ~~undotree~~ mundo
 vim.keymap.set("n", "<leader>u", function()
 	vim.cmd("MundoToggle")
 end)
+
+vim.keymap.set("n", "<esc>", function()
+	vim.cmd("noh")
+end, { desc = "Escape and Clear Highlight Search" })
 
 -- open config folder
 vim.keymap.set("n", "<leader>zp", function()
@@ -46,20 +47,9 @@ vim.keymap.set("v", "<tab>", ">")
 vim.keymap.set("v", "<s-tab>", "<")
 vim.keymap.set("i", "<s-tab>", "<C-d>")
 
--- BUFFERS --
-
-vim.keymap.set("n", "<leader>qq", function()
-	require("bufdelete").bufdelete(0)
-end)
-vim.keymap.set("n", "<leader>qf", function()
-	require("bufdelete").bufdelete(0, true) -- force delete
-end)
-
 -- WINDOWS --
 
 -- Creating windows
--- vim.keymap.set("n", "<C-|>", [[<C-w>v<CR>]])
--- vim.keymap.set("n", "<C-_>", [[<C-w>s<CR>]])
 vim.keymap.set("n", "<leader>nt", [[<C-w>v<CR>]])
 vim.keymap.set("n", "<leader>ns", [[<C-w>s<CR>]])
 
@@ -69,24 +59,15 @@ vim.keymap.set("n", "<C-j>", [[<C-w>j]])
 vim.keymap.set("n", "<C-k>", [[<C-w>k]])
 vim.keymap.set("n", "<C-l>", [[<C-w>l]])
 
--- Moving windows
--- vim.keymap.set("n", "<M-h>", [[<C-w>H]])
--- vim.keymap.set("n", "<M-j>", [[<C-w>J]])
--- vim.keymap.set("n", "<M-k>", [[<C-w>K]])
--- vim.keymap.set("n", "<M-l>", [[<C-w>L]])
-
 -- Resizing windows
 vim.keymap.set("n", "<C-up>", [[<C-w>+]])
 vim.keymap.set("n", "<C-down>", [[<C-w>-]])
 vim.keymap.set("n", "<C-left>", [[<C-w><]])
 vim.keymap.set("n", "<C-right>", [[<C-w>>]])
--- vim.keymap.set("n", "<C-=>", [[<C-w>=]])
--- vim.keymap.set("n", "<C-+>", [[<C-w>|<C-w>_]])
 vim.keymap.set("n", "<leader>ne", [[<C-w>=]])
 vim.keymap.set("n", "<leader>nn", [[<C-w>|<C-w>_]])
 
 -- Closing windows
--- vim.keymap.set("n", "<leader>qw", [[<C-w>q<CR>]])
 vim.keymap.set("n", "<leader>nq", [[<C-w>q<CR>]])
 
 -- MISC (Toggles) --

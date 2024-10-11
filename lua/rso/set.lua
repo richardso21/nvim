@@ -1,6 +1,17 @@
 vim.g.termguicolors = true
 vim.o.hidden = true
 
+-- change floating window background
+vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+
+-- disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- replace w/ lualine
+vim.opt.showmode = false
+vim.opt.showcmd = false
+
 -- number line
 vim.opt.nu = true
 vim.opt.relativenumber = true

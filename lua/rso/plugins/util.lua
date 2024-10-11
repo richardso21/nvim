@@ -1,23 +1,5 @@
 return {
-	-- Comments
-	{
-		"numToStr/Comment.nvim",
-		opts = {
-			toggler = {
-				line = "<leader>m",
-				block = "<leader>M",
-			},
-			opleader = {
-				line = "m",
-				block = "M",
-			},
-			mappings = {
-				extra = false,
-			},
-		},
-		lazy = false,
-	},
-
+	{ import = "rso.plugins.util" },
 	-- Terminal
 	{
 		"akinsho/toggleterm.nvim",
@@ -31,31 +13,37 @@ return {
 	},
 
 	-- File Explorer
-	"nvim-tree/nvim-tree.lua",
+	{
+		"nvim-tree/nvim-tree.lua",
+		cmd = { "NvimTreeToggle", "NvimTreeFindFileToggle" },
+		keys = {
+			{ [[<leader>e]], "<cmd>NvimTreeToggle<CR>" },
+			{ [[<leader>E]], "<cmd>NvimTreeFindFileToggle<CR>" },
+		},
+		opts = {
+			view = { side = "right" },
+			filesystem_watchers = {
+				ignore_dirs = { ".git", "node_modules" },
+			},
+		},
+	},
 
 	-- Git (Fugitive)
-	"tpope/vim-fugitive",
+	{ "tpope/vim-fugitive", event = "VeryLazy" },
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {}, -- required for it to actually init
+		event = "VeryLazy",
 	},
 
 	-- Undo Tree
-	"simnalamburt/vim-mundo",
-
-	-- Session Persist
-	{
-		"rmagatti/auto-session",
-		opts = {
-			log_level = "error",
-			auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-		},
-	},
+	{ "simnalamburt/vim-mundo", keys = { { [[<leader>u]], "<cmd>MundoToggle<CR>", desc = "Toggle Undo Tree" } } },
 
 	-- aerial view
 	{
 		"stevearc/aerial.nvim",
 		opts = {},
+		keys = { { [[<leader>oa]], "<cmd>AerialToggle<CR>", desc = "Toggle Aerial" } },
 	},
 
 	-- Multi-select (VSCode Cmd/Ctrl+D)
@@ -67,66 +55,19 @@ return {
 				["Add Cursor Up"] = "<C-S-Up>",
 			}
 		end,
+		event = "VeryLazy",
 	},
 
-	-- Large Files
-	"LunarVim/bigfile.nvim",
-
 	-- surround
-	"tpope/vim-surround",
-
-	-- flash
 	{
-		"folke/flash.nvim",
+		"tpope/vim-surround",
 		event = "VeryLazy",
-		opts = {
-			label = {
-				rainbow = {
-					enabled = true,
-				},
-			},
-		},
-		keys = {
-			{
-				"s",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").jump()
-				end,
-				desc = "Flash",
-			},
-			{
-				"S",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").treesitter()
-				end,
-				desc = "Flash Treesitter",
-			},
-			{
-				"r",
-				mode = "o",
-				function()
-					require("flash").remote()
-				end,
-				desc = "Remote Flash",
-			},
-			{
-				"R",
-				mode = { "o", "x" },
-				function()
-					require("flash").treesitter_search()
-				end,
-				desc = "Treesitter Search",
-			},
-			{
-				"<c-s>",
-				mode = { "c" },
-				function()
-					require("flash").toggle()
-				end,
-				desc = "Toggle Flash Search",
-			},
-		},
+	},
+
+	-- Fix cursor position changing on buffer switch
+	{
+		"BranimirE/fix-auto-scroll.nvim",
+		config = true,
+		event = "VeryLazy",
 	},
 }

@@ -1,54 +1,79 @@
 return {
-	-- Treesitter
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-	},
-	"nvim-treesitter/nvim-treesitter-context",
-	"HiPhish/rainbow-delimiters.nvim",
-
-	-- LSP & Autocomplete
-	{ "VonHeikemen/lsp-zero.nvim", branch = "v4.x", lazy = true, config = false },
-	{ "williamboman/mason.nvim", lazy = false, config = true },
-	"williamboman/mason-lspconfig.nvim",
-	{
-		"neovim/nvim-lspconfig",
-		cmd = { "LspInfo", "LspInstall", "LspStart" },
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
-		},
-	},
-	"hrsh7th/cmp-nvim-lsp",
-	{ "hrsh7th/nvim-cmp", event = "InsertEnter" },
-	"onsails/lspkind.nvim",
-	{
-		"L3MON4D3/LuaSnip",
-		dependencies = { "rafamadriz/friendly-snippets" },
-	},
-	"saadparwaiz1/cmp_luasnip",
+	{ import = "rso.plugins.lang" },
 
 	-- Formatting
 	{
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },
+		opts = {
+			formatters_by_ft = {
+				lua = { "stylua" },
+				python = { "isort", "ruff_format" },
+				javascript = { "prettierd" },
+				typescript = { "prettierd" },
+				vue = { "prettierd" },
+				html = { "prettierd" },
+				css = { "prettierd" },
+				json = { "prettierd" },
+				markdown = { "markdownlint" },
+				go = { "gofumpt" },
+				c = { "clang_format" },
+				cpp = { "clang_format" },
+				java = { "google-java-format" },
+				yaml = { "yamlfmt" },
+				typst = { "typstyle" },
+				tex = { "latexindent" },
+			},
+			format_on_save = true,
+		},
 	},
 
 	-- Linting
-	"mfussenegger/nvim-lint",
+	{
+		"mfussenegger/nvim-lint",
+		event = "BufWritePre",
+		config = function()
+			require("lint").linters_by_ft = {
+				markdown = { "markdownlint" },
+				python = { "ruff" },
+				javascript = { "quick-lint-js" },
+				typescript = { "quick-lint-js" },
+			}
+
+			-- lint on save
+			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+				callback = function()
+					require("lint").try_lint()
+				end,
+			})
+		end,
+	},
 
 	-- LaTeX
 	{
 		"lervag/vimtex",
-		lazy = false,
+		ft = "tex",
+		init = function()
+			vim.g.tex_flavor = "latex"
+			vim.g.vimtex_view_method = "skim"
+			vim.g.vimtex_compiler_method = "latexmk"
+			vim.g.vimtex_quickfix_open_on_warning = 0
+
+			-- autoclean on quit
+			local au_group = vim.api.nvim_create_augroup("vimtex_events", {})
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "VimtexEventQuit",
+				group = au_group,
+				command = "VimtexClean",
+			})
+		end,
 	},
 
 	-- Markdown preview support
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
+		ft = "markdown",
 		opts = {
 			heading = {
 				backgrounds = {

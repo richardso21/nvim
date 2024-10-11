@@ -1,4 +1,6 @@
 return {
+	{ import = "rso.plugins.ui" },
+
 	-- Theme
 	{
 		"bluz71/vim-nightfly-colors",
@@ -14,13 +16,6 @@ return {
 		end,
 	},
 
-	-- Telescope
-	{
-		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
-
 	-- Bracket/Parenthesis/Brace Pairs
 	{
 		"windwp/nvim-autopairs",
@@ -33,10 +28,34 @@ return {
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
+		opts = {
+			lsp = {
+				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+				progress = {
+					enabled = true,
+				},
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true,
+				},
+				hover = {
+					silent = true,
+				},
+			},
+			-- you can enable a preset for easier configuration
+			presets = {
+				bottom_search = true, -- use a classic bottom cmdline for search
+				command_palette = true, -- position the cmdline and popupmenu together
+				long_message_to_split = true, -- long messages will be sent to a split
+				lsp_doc_border = true, -- add a border to hover docs and signature help
+			},
+		},
 	},
 	"MunifTanjim/nui.nvim",
 	{
 		"rcarriga/nvim-notify",
+		event = "VeryLazy",
 		opts = {
 			top_down = false,
 			timeout = 2500,
@@ -47,6 +66,7 @@ return {
 	{
 		"stevearc/dressing.nvim",
 		opts = {},
+		event = "VeryLazy",
 	},
 
 	-- scroll animation
@@ -57,14 +77,36 @@ return {
 		},
 		-- if using neovide, disable neoscroll
 		cond = not vim.g.neovide,
+		lazy = false,
 	},
 
-	-- Mode Line
-	"nvim-lualine/lualine.nvim",
-
 	-- Buffers
-	"akinsho/bufferline.nvim",
-	"famiu/bufdelete.nvim",
+	{
+		"akinsho/bufferline.nvim",
+		opts = {
+			options = {
+				diagnostics = "nvim_lsp",
+			},
+		},
+		lazy = false,
+		keys = {
+			{ "K", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+			{ "J", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer" },
+			{ "L", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer right" },
+			{ "H", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer left" },
+			{ "<leader>bb", "<cmd>BufferLinePick<cr>", desc = "Pick buffer" },
+			{ "<leader>bp", "<cmd>BufferLineTogglePin<cr>", desc = "Pin buffer" },
+			{ "<leader>bq", "<cmd>BufferLinePickClose<cr>", desc = "Choose buffer to close" },
+			{ "<leader>bQ", "<cmd>BufferLineCloseOthers<cr>", desc = "Close all other buffers" },
+		},
+	},
+	{
+		"famiu/bufdelete.nvim",
+		keys = {
+			{ "<leader>qq", "<cmd>Bdelete<cr>", desc = "Delete current buffer" },
+			{ "<leader>qf", "<cmd>Bdelete! %<cr>", desc = "Force delete current buffer" },
+		},
+	},
 
 	-- Window Tinting
 	{
@@ -72,27 +114,9 @@ return {
 		opts = {
 			tint = -55,
 		},
-	},
-
-	-- Indentations
-	{
-		"echasnovski/mini.indentscope",
-		version = "*",
-	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
+		event = "VeryLazy",
 	},
 
 	-- Variable illuminate
-	"RRethy/vim-illuminate",
-
-	-- Which Key
-	{
-		"folke/which-key.nvim",
-		init = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-		end,
-	},
+	{ "RRethy/vim-illuminate", event = "VeryLazy" },
 }
