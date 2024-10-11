@@ -62,6 +62,9 @@ return {
 			fps = 60,
 			max_width = 70,
 		},
+		init = function()
+			require("notify")("What da dog doin?")
+		end,
 	},
 	{
 		"stevearc/dressing.nvim",
