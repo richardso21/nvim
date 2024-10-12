@@ -4,26 +4,23 @@ vim.diagnostic.config({
 })
 
 -- vim.opt.signcolumn = "yes"
--- local signs = { E = "", W = "", N = "", I = "" }
--- vim.diagnostic.config({
--- 	signs = {
--- 		text = {
--- 			[vim.diagnostic.severity.E] = signs.E,
--- 			[vim.diagnostic.severity.W] = signs.W,
--- 			[vim.diagnostic.severity.N] = signs.N,
--- 			[vim.diagnostic.severity.I] = signs.I,
--- 		},
--- 	},
--- })
-
-for _, diag in ipairs({ "Error", "Warn", "Info", "Hint" }) do
-	vim.fn.sign_define("DiagnosticSign" .. diag, {
-		text = "",
-		texthl = "DiagnosticSign" .. diag,
-		linehl = "",
-		numhl = "DiagnosticSign" .. diag,
-	})
-end
+local signs = { E = "", W = "", N = "", I = "" }
+vim.diagnostic.config({
+	signs = {
+		numhl = {
+			[vim.diagnostic.severity.E] = "DiagnosticSignNumHLError",
+			[vim.diagnostic.severity.W] = "DiagnosticSignNumHLWarn",
+			[vim.diagnostic.severity.N] = "DiagnosticSignNumHLInfo",
+			[vim.diagnostic.severity.I] = "DiagnosticSignNumHLHint",
+		},
+		text = {
+			[vim.diagnostic.severity.E] = signs.E,
+			[vim.diagnostic.severity.W] = signs.W,
+			[vim.diagnostic.severity.N] = signs.N,
+			[vim.diagnostic.severity.I] = signs.I,
+		},
+	},
+})
 
 local custom_handlers = {
 	-- python lsp setup

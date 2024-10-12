@@ -1,8 +1,22 @@
 vim.g.termguicolors = true
 vim.o.hidden = true
 
--- change floating window background
+-- set custom highlight groups
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+
+local diagnostic_colors = {
+	Error = "NightflyRed",
+	Warn = "NightflyYellow",
+	Info = "NightflyMalibu",
+	Hint = "NightflyTurquoise",
+}
+for diag, hl_group in pairs(diagnostic_colors) do
+	local hl_opts = vim.api.nvim_get_hl(0, { name = hl_group })
+	vim.api.nvim_set_hl(0, "DiagnosticSignNumHL" .. diag, {
+		fg = hl_opts.fg,
+		bold = true,
+	})
+end
 
 -- disable netrw
 vim.g.loaded_netrw = 1

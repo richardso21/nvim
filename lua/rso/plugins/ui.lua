@@ -7,7 +7,7 @@ return {
 		name = "nightfly",
 		lazy = false,
 		priority = 1000,
-		config = function()
+		init = function()
 			vim.g.nightflyWinSeparator = 2
 			vim.g.nightflyCursorColor = true
 			vim.g.nightflyTerminalColors = false

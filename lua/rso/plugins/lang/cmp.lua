@@ -55,6 +55,7 @@ return {
 			},
 			sources = {
 				{ name = "nvim_lsp" },
+				{ name = "lazydev" },
 			},
 			mapping = mappings,
 			snippet = {
@@ -62,6 +63,7 @@ return {
 					vim.snippet.expand(args.body)
 				end,
 			},
+			---@diagnostic disable-next-line: missing-fields
 			formatting = {
 				fields = { "kind", "abbr", "menu" },
 				format = function(entry, vim_item)

@@ -22,18 +22,26 @@ return {
 		},
 		opts = {
 			view = { side = "right" },
+			filters = { custom = { "^.git$" } },
+			renderer = {
+				group_empty = true,
+				hidden_display = "simple",
+				indent_markers = {
+					enable = true,
+				},
+			},
 			filesystem_watchers = {
-				ignore_dirs = { ".git", "node_modules" },
+				ignore_dirs = { ".git", "node_modules", "venv", ".venv", "__pycache__" },
 			},
 		},
 	},
 
 	-- Git (Fugitive)
-	{ "tpope/vim-fugitive", event = "VeryLazy" },
+	{ "tpope/vim-fugitive", event = "BufReadPost" },
 	{
 		"lewis6991/gitsigns.nvim",
-		opts = {}, -- required for it to actually init
-		event = "VeryLazy",
+		opts = {},
+		event = "BufReadPost",
 	},
 
 	-- Undo Tree
@@ -55,19 +63,19 @@ return {
 				["Add Cursor Up"] = "<C-S-Up>",
 			}
 		end,
-		event = "VeryLazy",
+		event = "BufReadPost",
 	},
 
 	-- surround
 	{
 		"tpope/vim-surround",
-		event = "VeryLazy",
+		event = "BufReadPre",
 	},
 
 	-- Fix cursor position changing on buffer switch
 	{
 		"BranimirE/fix-auto-scroll.nvim",
 		config = true,
-		event = "VeryLazy",
+		event = "BufReadPost",
 	},
 }
