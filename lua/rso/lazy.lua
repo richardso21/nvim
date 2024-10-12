@@ -11,7 +11,42 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("rso.plugins", { defaults = { lazy = true } })
+require("lazy").setup("rso.plugins", {
+	defaults = { lazy = true },
+	performance = {
+		rtp = {
+			disabled_plugins = {
+				"2html_plugin",
+				"tohtml",
+				"getscript",
+				"getscriptPlugin",
+				"gzip",
+				"logipat",
+				"netrw",
+				"netrwPlugin",
+				"netrwSettings",
+				"netrwFileHandlers",
+				"matchit",
+				"tar",
+				"tarPlugin",
+				"rrhelper",
+				"spellfile_plugin",
+				"vimball",
+				"vimballPlugin",
+				"zip",
+				"zipPlugin",
+				"tutor",
+				"rplugin",
+				"syntax",
+				"synmenu",
+				"optwin",
+				"compiler",
+				"bugreport",
+				"ftplugin",
+			},
+		},
+	},
+})
 
 vim.keymap.set("n", "<leader>zz", function()
 	vim.cmd("Lazy")

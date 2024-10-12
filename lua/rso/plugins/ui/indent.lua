@@ -4,7 +4,7 @@ return {
 		"echasnovski/mini.indentscope",
 		version = "*",
 		opts = {
-			symbol = "│",
+			symbol = "▎",
 			options = {
 				try_as_border = true,
 			},
@@ -12,17 +12,16 @@ return {
 				delay = 50,
 			},
 		},
-		event = "VeryLazy",
+		event = "BufReadPost",
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
 		opts = {
 			indent = {
-				char = "│",
-				tab_char = "│",
+				char = "▏",
+				tab_char = "▏",
 			},
-			scope = { enabled = false },
 			exclude = {
 				filetypes = {
 					"help",
@@ -39,6 +38,6 @@ return {
 				},
 			},
 		},
-		event = "VeryLazy",
+		event = "BufReadPost",
 	},
 }
