@@ -7,11 +7,11 @@ end, { desc = "Escape and Clear Highlight Search" })
 
 -- open config folder
 vim.keymap.set("n", "<leader>zp", function()
-	local as = require("auto-session")
-	as.AutoSaveSession()
+	local persist = require("persisted")
+	persist.save({ session = vim.g.persisted_loaded_session })
 	vim.cmd("lcd ~/.config/nvim/")
 	vim.cmd("%bd!")
-	as.AutoRestoreSession()
+	persist.load()
 	print("config directory")
 end)
 
