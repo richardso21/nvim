@@ -1,10 +1,6 @@
 vim.g.mapleader = " "
 
--- toggle ~~undotree~~ mundo
-vim.keymap.set("n", "<leader>u", function()
-	vim.cmd("MundoToggle")
-end)
-
+-- remove highlight and clear search
 vim.keymap.set("n", "<esc>", function()
 	vim.cmd("noh")
 end, { desc = "Escape and Clear Highlight Search" })
@@ -84,19 +80,22 @@ vim.keymap.set("n", "<leader>oh", function()
 	print("highlight: " .. tostring(vim.o.hls))
 end)
 
--- togle illumination (highlighting of all instances of a word)
-vim.keymap.set("n", "<leader>oi", function()
-	require("illuminate").toggle()
-	print("illuminate: " .. tostring(not require("illuminate").is_paused()))
-end)
-
 -- toggle wrapping
 vim.keymap.set("n", "<leader>ow", function()
 	vim.wo.wrap = not vim.wo.wrap
 	print("wrap: " .. tostring(vim.wo.wrap))
 end)
 
--- toggle ~~copilot~~ supermaven suggestions
-vim.keymap.set("n", "<leader>oc", function()
-	require("supermaven-nvim.api").toggle()
-end)
+-- BORROWED FROM LAZYVIM --
+
+-- better up/down (from LazyVim)
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+
+-- better indenting
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", "<S-tab>", "<gv")
+vim.keymap.set("v", "<tab>", ">gv")

@@ -27,7 +27,11 @@ return {
 	"nvim-tree/nvim-web-devicons",
 	{
 		"folke/noice.nvim",
-		event = "VeryLazy",
+		lazy = false,
+		keys = {
+			-- dismiss notifications
+			{ "<leader>N", "<cmd>NoiceDismiss<cr>", desc = "Dismiss Notifications" },
+		},
 		opts = {
 			lsp = {
 				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -75,6 +79,7 @@ return {
 	-- scroll animation
 	{
 		"karb94/neoscroll.nvim",
+		enabled = false,
 		opts = {
 			easing_function = "sine",
 		},
@@ -121,5 +126,9 @@ return {
 	},
 
 	-- Variable illuminate
-	{ "RRethy/vim-illuminate", event = "VeryLazy" },
+	{
+		"RRethy/vim-illuminate",
+		event = "VeryLazy",
+		keys = { { [[<leader>oi]], "<cmd>IlluminateToggle<cr>", desc = "Toggle Illuminate" } },
+	},
 }

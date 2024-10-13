@@ -18,7 +18,7 @@ return {
 		cmd = { "NvimTreeToggle", "NvimTreeFindFileToggle" },
 		keys = {
 			{ [[<leader>e]], "<cmd>NvimTreeToggle<CR>" },
-			{ [[<leader>E]], "<cmd>NvimTreeFindFileToggle<CR>" },
+			{ [[<leader>E]], "<cmd>NvimTreeFindFileToggle!<CR>" },
 		},
 		opts = {
 			view = { side = "right" },

@@ -6,6 +6,7 @@ vim.diagnostic.config({
 -- vim.opt.signcolumn = "yes"
 local signs = { E = "", W = "", N = "", I = "" }
 vim.diagnostic.config({
+	virtual_text = false,
 	signs = {
 		numhl = {
 			[vim.diagnostic.severity.E] = "DiagnosticSignNumHLError",
@@ -70,7 +71,7 @@ local custom_handlers = {
 	end,
 }
 
-local function register_keymaps()
+local function setup_lspconfig()
 	local lspconfig = require("lspconfig")
 	local lsp_attach = function(event)
 		local opts = { buffer = event.buf }
@@ -106,24 +107,41 @@ local function register_keymaps()
 end
 
 return {
-	"neovim/nvim-lspconfig",
-	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
-		"williamboman/mason-lspconfig.nvim",
-	},
-	cmd = { "LspInfo", "LspInstall", "LspStart" },
-	event = { "BufReadPre", "BufNewFile" },
-	config = function()
-		-- lspconfig
-		register_keymaps()
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"williamboman/mason-lspconfig.nvim",
+		},
+		cmd = { "LspInfo", "LspInstall", "LspStart" },
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			-- lspconfig
+			setup_lspconfig()
 
-		-- mason-lspconfig
-		require("mason-lspconfig").setup({
-			handlers = vim.tbl_deep_extend("force", custom_handlers, {
-				function(server_name)
-					require("lspconfig")[server_name].setup({})
+			-- mason-lspconfig
+			require("mason-lspconfig").setup({
+				handlers = vim.tbl_deep_extend("force", custom_handlers, {
+					function(server_name)
+						require("lspconfig")[server_name].setup({})
+					end,
+				}),
+			})
+		end,
+	},
+	{
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		keys = {
+			{
+				"<leader>ol",
+				function()
+					local vt = vim.diagnostic.config().virtual_text
+					vim.diagnostic.config({ virtual_text = not vt, virtual_lines = vt })
 				end,
-			}),
-		})
-	end,
+				desc = "Toggle between lsp_lines and virtual text",
+			},
+		},
+		opts = {},
+	},
 }

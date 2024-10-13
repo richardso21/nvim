@@ -88,6 +88,9 @@ return {
 	{
 		"supermaven-inc/supermaven-nvim",
 		event = "InsertEnter",
+		keys = {
+			{ "<leader>oc", "<cmd>SupermavenToggle<cr>", desc = "Toggle supermaven" },
+		},
 		opts = {
 			keymaps = {
 				accept_suggestion = "<M-l>",

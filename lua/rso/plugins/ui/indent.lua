@@ -1,8 +1,24 @@
+local ignore_indent_fts = {
+	"alpha",
+	"dashboard",
+	"fzf",
+	"help",
+	"lazy",
+	"lazyterm",
+	"mason",
+	"NvimTree",
+	"neo-tree",
+	"notify",
+	"toggleterm",
+	"Trouble",
+	"trouble",
+}
+
 return {
 	-- Indentations
 	{
 		"echasnovski/mini.indentscope",
-		version = "*",
+		version = false,
 		opts = {
 			symbol = "▎",
 			options = {
@@ -13,6 +29,14 @@ return {
 			},
 		},
 		event = "BufReadPost",
+		init = function()
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = ignore_indent_fts,
+				callback = function()
+					vim.b.miniindentscope_disable = true
+				end,
+			})
+		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -23,19 +47,7 @@ return {
 				tab_char = "▏",
 			},
 			exclude = {
-				filetypes = {
-					"help",
-					"alpha",
-					"dashboard",
-					"neo-tree",
-					"Trouble",
-					"trouble",
-					"lazy",
-					"mason",
-					"notify",
-					"toggleterm",
-					"lazyterm",
-				},
+				filetypes = ignore_indent_fts,
 			},
 		},
 		event = "BufReadPost",
