@@ -28,9 +28,6 @@ return {
 			"syntax",
 			"matchparen",
 			"vimopts",
-			function()
-				require("rainbow-delimiters").disable(0)
-			end,
 		},
 	},
 }

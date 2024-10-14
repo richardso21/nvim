@@ -12,6 +12,7 @@ return {
 		"~/.local/share/nvim",
 	},
 	init = function()
+		-- when switching sessions, make sure to save the current and clear all buffers
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "PersistedTelescopeLoadPre",
 			callback = function()
@@ -20,6 +21,33 @@ return {
 
 				-- Delete all of the open buffers
 				vim.api.nvim_input("<ESC>:%bd!<CR>")
+			end,
+		})
+
+		-- ignore certain buffer types when saving session
+		local ignore_bufs = {
+			"alpha",
+			"dashboard",
+			"fzf",
+			"help",
+			"lazy",
+			"lazyterm",
+			"mason",
+			"NvimTree",
+			"neo-tree",
+			"notify",
+			"toggleterm",
+			"Trouble",
+			"trouble",
+		}
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "PersistedSavePre",
+			callback = function()
+				for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+					if vim.tbl_contains(ignore_bufs, vim.bo[buf].filetype) then
+						vim.api.nvim_buf_delete(buf, { force = true })
+					end
+				end
 			end,
 		})
 	end,
