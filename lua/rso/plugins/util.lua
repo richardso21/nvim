@@ -12,30 +12,6 @@ return {
 		},
 	},
 
-	-- File Explorer
-	{
-		"nvim-tree/nvim-tree.lua",
-		cmd = { "NvimTreeToggle", "NvimTreeFindFileToggle" },
-		keys = {
-			{ [[<leader>e]], "<cmd>NvimTreeToggle<CR>" },
-			{ [[<leader>E]], "<cmd>NvimTreeFindFileToggle!<CR>" },
-		},
-		opts = {
-			view = { side = "right" },
-			filters = { custom = { "^.git$" } },
-			renderer = {
-				group_empty = true,
-				hidden_display = "simple",
-				indent_markers = {
-					enable = true,
-				},
-			},
-			filesystem_watchers = {
-				ignore_dirs = { ".git", "node_modules", "venv", ".venv", "__pycache__" },
-			},
-		},
-	},
-
 	-- Git (Fugitive)
 	{ "tpope/vim-fugitive", event = "BufReadPost" },
 	{
