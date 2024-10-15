@@ -4,6 +4,7 @@ return {
 		dependencies = {
 			"b0o/nvim-tree-preview.lua",
 		},
+		lazy = false,
 		cmd = { "NvimTreeToggle", "NvimTreeFindFileToggle" },
 		keys = {
 			{ [[<leader>e]], "<cmd>NvimTreeToggle<CR>" },
