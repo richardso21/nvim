@@ -31,15 +31,8 @@ return {
 	{
 		"HiPhish/rainbow-delimiters.nvim",
 		event = "BufReadPre",
-		config = function()
-			-- This module contains a number of default definitions
-			local rainbow_delimiters = require("rainbow-delimiters")
-
+		init = function()
 			vim.g.rainbow_delimiters = {
-				strategy = {
-					[""] = rainbow_delimiters.strategy["global"],
-					vim = rainbow_delimiters.strategy["local"],
-				},
 				highlight = {
 					"RainbowDelimiterYellow",
 					"RainbowDelimiterBlue",
