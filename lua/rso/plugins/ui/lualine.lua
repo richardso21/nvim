@@ -1,6 +1,11 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	lazy = false,
+	init = function()
+		-- don't need to show mode or cmd on command bar
+		vim.opt.showmode = false
+		vim.opt.showcmd = false
+	end,
 	config = function()
 		-- https://github.com/nvim-lualine/lualine.nvim/issues/335#issuecomment-916759033
 		local custom_fname = require("lualine.components.filename"):extend()
@@ -33,10 +38,6 @@ return {
 			) .. data
 			return data
 		end
-
-		-- don't need to show mode or cmd on command bar
-		vim.opt.showmode = false
-		vim.opt.showcmd = false
 
 		-- modified ayu_dark theme
 		local colors = {
@@ -113,7 +114,7 @@ return {
 				lualine_z = {},
 			},
 			tabline = {},
-			extensions = { "nvim-tree", "aerial", "lazy", "toggleterm", "mason", "mundo" },
+			extensions = { "nvim-tree", "aerial", "lazy", "toggleterm", "mason", "mundo", "neo-tree" },
 		})
 	end,
 }

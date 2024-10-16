@@ -71,7 +71,7 @@ vim.opt.smartcase = true
 vim.opt.title = true
 vim.opt.titlelen = 0 -- do not shorten title
 -- set title string to nvim + name of current workspace directory
-vim.opt.titlestring = "nvim " .. vim.fn.fnamemodify(vim.loop.cwd() or "", ":t")
+vim.opt.titlestring = "nvim " .. vim.fn.fnamemodify(vim.uv.cwd() or "", ":t")
 
 -- disable swap files (I ~usually~ save frequently)
 vim.opt.swapfile = false
