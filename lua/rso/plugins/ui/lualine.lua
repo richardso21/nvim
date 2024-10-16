@@ -1,11 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	lazy = false,
-	init = function()
-		-- don't need to show mode or cmd on command bar
-		vim.opt.showmode = false
-		vim.opt.showcmd = false
-	end,
 	config = function()
 		-- https://github.com/nvim-lualine/lualine.nvim/issues/335#issuecomment-916759033
 		local custom_fname = require("lualine.components.filename"):extend()
@@ -80,6 +75,7 @@ return {
 			options = {
 				theme = theme,
 				section_separators = { left = "", right = "" },
+				component_separators = { left = "", right = "" },
 			},
 			sections = {
 				lualine_a = {
@@ -99,10 +95,19 @@ return {
 					},
 				},
 				lualine_c = { "aerial" },
-				lualine_x = { "diagnostics", "diff" },
+				lualine_x = {
+					{
+						---@diagnostic disable-next-line: undefined-field
+						require("noice").api.status.command.get_hl,
+						---@diagnostic disable-next-line: undefined-field
+						require("noice").api.status.command.has,
+					},
+					"diagnostics",
+					"diff",
+				},
 				lualine_y = { "filetype" },
 				lualine_z = {
-					{ "location" },
+					"location",
 				},
 			},
 			inactive_sections = {

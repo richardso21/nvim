@@ -4,6 +4,14 @@ return {
 		opts = {
 			options = {
 				diagnostics = "nvim_lsp",
+				offsets = {
+					{
+						filetype = "neo-tree",
+						text = "Neo-tree",
+						highlight = "Directory",
+						text_align = "center",
+					},
+				},
 			},
 		},
 		lazy = false,
