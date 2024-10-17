@@ -89,7 +89,14 @@ return {
 		"supermaven-inc/supermaven-nvim",
 		event = "InsertEnter",
 		keys = {
-			{ "<leader>oc", "<cmd>SupermavenToggle<cr>", desc = "Toggle supermaven" },
+			{
+				"<leader>oc",
+				function()
+					require("supermaven-nvim.api").toggle()
+					print("AI Autocomplete: " .. tostring(require("supermaven-nvim.api").is_running()))
+				end,
+				desc = "toggle AI auto-suggestions",
+			},
 		},
 		opts = {
 			keymaps = {

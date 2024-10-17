@@ -37,6 +37,7 @@ return {
 				{ "<leader>bQ", desc = "buffer close others" },
 				{ "<leader>bb", desc = "buffer selection" },
 				{ "<leader>bp", desc = "buffer toggle pin" },
+				{ "<leader>bn", desc = "buffer new empty" },
 				{ "<leader>bq", desc = "buffer close selection" },
 				{ "<leader>e", desc = "file explorer" },
 				{ "<leader>E", desc = "file explorer find file" },

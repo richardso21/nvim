@@ -1,5 +1,6 @@
 return {
-	"hrsh7th/nvim-cmp",
+	"yioneko/nvim-cmp",
+	branch = "perf",
 	dependencies = { "hrsh7th/cmp-nvim-lsp", "onsails/lspkind.nvim" },
 	event = "InsertEnter",
 	config = function()

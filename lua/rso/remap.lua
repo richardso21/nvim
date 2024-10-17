@@ -7,6 +7,11 @@ end, { desc = "Escape and Clear Highlight Search" })
 
 -- open config folder
 vim.keymap.set("n", "<leader>zp", function()
+	-- if already in config dir, do nothing
+	if vim.fn.getcwd() == vim.fn.expand("~/.config/nvim") then
+		print("Already in config directory")
+		return
+	end
 	local persist = require("persisted")
 	persist.save({ session = vim.g.persisted_loaded_session })
 	vim.cmd("lcd ~/.config/nvim/")
@@ -36,6 +41,11 @@ vim.keymap.set("n", "<leader>w", function()
 end)
 vim.keymap.set("n", "<leader>W", function()
 	vim.cmd("noa w")
+end)
+
+-- create empty buffer
+vim.keymap.set("n", "<leader>bn", function()
+	vim.cmd("enew")
 end)
 
 -- tab and s-tab behavior

@@ -103,4 +103,14 @@ return {
 		event = "VeryLazy",
 		keys = { { [[<leader>oi]], "<cmd>IlluminateToggle<cr>", desc = "Toggle Illuminate" } },
 	},
+
+	-- hex colorizer
+	{
+		"norcalli/nvim-colorizer.lua",
+		event = "VeryLazy",
+		opts = { "*" },
+		keys = {
+			{ "<leader>oz", "<cmd>ColorizerToggle<cr>", desc = "toggle colorizer" },
+		},
+	},
 }

@@ -3,10 +3,9 @@ vim.diagnostic.config({
 	float = { border = "rounded" },
 })
 
--- vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "yes"
 local signs = { E = "", W = "", N = "", I = "" }
 vim.diagnostic.config({
-	virtual_text = false,
 	signs = {
 		numhl = {
 			[vim.diagnostic.severity.E] = "DiagnosticSignNumHLError",
@@ -41,7 +40,6 @@ local custom_handlers = {
 	-- clang: 'multiple different client offset_encodings detected'
 	clangd = function()
 		require("lspconfig").clangd.setup({
-			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			cmd = {
 				"clangd",
 				"--offset-encoding=utf-16",
@@ -67,6 +65,16 @@ local custom_handlers = {
 			root_dir = function()
 				return vim.fn.expand("%:p:h") -- use current file's directory
 			end,
+		})
+	end,
+
+	-- take care of jdtls spam
+	jdtls = function()
+		require("lspconfig").jdtls.setup({
+			handlers = {
+				["language/status"] = function() end,
+				["$/progress"] = function() end,
+			},
 		})
 	end,
 }
@@ -128,20 +136,5 @@ return {
 				}),
 			})
 		end,
-	},
-	{
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		keys = {
-			{
-				"<leader>ol",
-				function()
-					local vt = vim.diagnostic.config().virtual_text
-					vim.diagnostic.config({ virtual_text = not vt, virtual_lines = vt })
-				end,
-				desc = "Toggle between lsp_lines and virtual text",
-			},
-		},
-		opts = {},
 	},
 }

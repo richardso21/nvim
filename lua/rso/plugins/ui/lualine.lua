@@ -5,7 +5,7 @@ return {
 		-- https://github.com/nvim-lualine/lualine.nvim/issues/335#issuecomment-916759033
 		local custom_fname = require("lualine.components.filename"):extend()
 		local highlight = require("lualine.highlight")
-		local default_status_colors = { saved = "#E6E1CF", modified = "#EBC48D" }
+		local default_status_colors = { saved = "#E6E1CF", modified = "#EBC48D", dirname = "#405050" }
 
 		function custom_fname:init(options)
 			custom_fname.super.init(self, options)
@@ -16,8 +16,13 @@ return {
 					self.options
 				),
 				modified = highlight.create_component_highlight_group(
-					{ fg = default_status_colors.modified, gui = "bold" },
+					{ fg = default_status_colors.modified, gui = "bold,italic" },
 					"filename_status_modified",
+					self.options
+				),
+				dirname = highlight.create_component_highlight_group(
+					{ fg = default_status_colors.dirname },
+					"filename_status_dirname",
 					self.options
 				),
 			}
@@ -27,11 +32,20 @@ return {
 		end
 
 		function custom_fname:update_status()
-			local data = custom_fname.super.update_status(self)
-			data = highlight.component_format_highlight(
+			local file_path = custom_fname.super.update_status(self)
+
+			-- get file name from `data` path
+			local fn = vim.fs.basename(file_path)
+			local dir = vim.fs.dirname(file_path)
+
+			-- highlight these items
+			local fn_hl = highlight.component_format_highlight(
 				vim.bo.modified and self.status_colors.modified or self.status_colors.saved
-			) .. data
-			return data
+			) .. fn
+			local dir_hl = highlight.component_format_highlight(self.status_colors.dirname)
+				.. (dir ~= "." and dir .. "/" or "")
+
+			return dir_hl .. fn_hl
 		end
 
 		-- modified ayu_dark theme
