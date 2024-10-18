@@ -1,6 +1,9 @@
 vim.g.termguicolors = true
 vim.o.hidden = true
 
+-- disable default statusline for lualine
+vim.o.laststatus = 0
+
 -- set custom highlight groups
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
 

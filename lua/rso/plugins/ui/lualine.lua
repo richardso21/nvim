@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	lazy = false,
+	event = "BufReadPre",
 	config = function()
 		-- https://github.com/nvim-lualine/lualine.nvim/issues/335#issuecomment-916759033
 		local custom_fname = require("lualine.components.filename"):extend()

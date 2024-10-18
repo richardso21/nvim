@@ -14,7 +14,7 @@ return {
 				},
 			},
 		},
-		lazy = false,
+		event = "BufReadPre",
 		keys = {
 			{ "K", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
 			{ "J", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer" },

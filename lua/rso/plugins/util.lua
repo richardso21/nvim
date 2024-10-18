@@ -21,7 +21,12 @@ return {
 	},
 
 	-- Undo Tree
-	{ "simnalamburt/vim-mundo", keys = { { [[<leader>u]], "<cmd>MundoToggle<CR>", desc = "Toggle Undo Tree" } } },
+	{
+		"simnalamburt/vim-mundo",
+		lazy = false,
+		cmd = { "MundoToggle" },
+		keys = { { [[<leader>u]], "<cmd>MundoToggle<CR>", desc = "Toggle Undo Tree" } },
+	},
 
 	-- aerial view
 	{
