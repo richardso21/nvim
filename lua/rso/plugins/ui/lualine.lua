@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	event = "BufReadPre",
+	event = "BufReadPost",
 	config = function()
 		-- https://github.com/nvim-lualine/lualine.nvim/issues/335#issuecomment-916759033
 		local custom_fname = require("lualine.components.filename"):extend()
@@ -85,6 +85,12 @@ return {
 			},
 		}
 
+		local arrow_status = require("arrow.statusline")
+
+		local get_arrow_status = function()
+			return arrow_status.text_for_statusline_with_icons()
+		end
+
 		require("lualine").setup({
 			options = {
 				theme = theme,
@@ -102,6 +108,7 @@ return {
 				},
 				lualine_b = {
 					"branch",
+					{ get_arrow_status },
 					{
 						custom_fname,
 						file_status = false,
@@ -133,7 +140,7 @@ return {
 				lualine_z = {},
 			},
 			tabline = {},
-			extensions = { "nvim-tree", "aerial", "lazy", "toggleterm", "mason", "mundo", "neo-tree" },
+			extensions = { "aerial", "lazy", "toggleterm", "mason", "mundo", "neo-tree", "quickfix" },
 		})
 	end,
 }

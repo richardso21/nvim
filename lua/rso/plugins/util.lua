@@ -12,14 +12,6 @@ return {
 		},
 	},
 
-	-- Git (Fugitive)
-	{ "tpope/vim-fugitive", event = "BufReadPost" },
-	{
-		"lewis6991/gitsigns.nvim",
-		opts = {},
-		event = "BufReadPost",
-	},
-
 	-- Undo Tree
 	{
 		"simnalamburt/vim-mundo",
@@ -50,7 +42,7 @@ return {
 	-- surround
 	{
 		"tpope/vim-surround",
-		event = "BufReadPre",
+		event = "BufReadPost",
 	},
 
 	-- Fix cursor position changing on buffer switch
@@ -58,5 +50,19 @@ return {
 		"BranimirE/fix-auto-scroll.nvim",
 		config = true,
 		event = "BufReadPost",
+	},
+
+	-- arrow
+	{
+		"otavioschwanck/arrow.nvim",
+		event = "BufReadPost",
+		opts = {
+			show_icons = true,
+			leader_key = "<leader><Tab>",
+			buffer_leader_key = "<S-Tab>",
+			window = {
+				border = "rounded",
+			},
+		},
 	},
 }
