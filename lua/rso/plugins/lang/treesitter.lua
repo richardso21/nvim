@@ -27,7 +27,6 @@ return {
 			})
 		end,
 	},
-	{ "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre" },
 	{
 		"HiPhish/rainbow-delimiters.nvim",
 		event = "BufReadPre",

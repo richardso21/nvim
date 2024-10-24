@@ -79,28 +79,39 @@ local custom_handlers = {
 	end,
 }
 
-local function setup_lspconfig()
+--- @param params table: options for setup_lspconfig
+local function setup_lspconfig(params)
+	params = params or {}
+	local opts = {
+		set_keys = true,
+	}
+	for k, v in pairs(params) do
+		opts[k] = v
+	end
+
 	local lspconfig = require("lspconfig")
 	local lsp_attach = function(event)
-		local opts = { buffer = event.buf }
-
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-		vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
-		vim.keymap.set("n", "<M-k>", vim.lsp.buf.hover, opts)
-		vim.keymap.set("i", "<M-k>", vim.lsp.buf.signature_help, opts)
-		vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, opts)
-		vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, opts)
-		vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, opts)
-		vim.keymap.set("n", "[d", function()
-			vim.diagnostic.jump({ count = -1, float = true })
-		end, opts)
-		vim.keymap.set("n", "]d", function()
-			vim.diagnostic.jump({ count = 1, float = true })
-		end, opts)
-		-- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-		-- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+		local map_opts = { buffer = event.buf }
+		if opts.set_keys then
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, map_opts)
+			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, map_opts)
+			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, map_opts)
+			vim.keymap.set("n", "go", vim.lsp.buf.type_definition, map_opts)
+			vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, map_opts)
+			vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, map_opts)
+			vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, map_opts)
+			vim.keymap.set("n", "[d", function()
+				vim.diagnostic.jump({ count = -1, float = true })
+			end, map_opts)
+			vim.keymap.set("n", "]d", function()
+				vim.diagnostic.jump({ count = 1, float = true })
+			end, map_opts)
+			-- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+			-- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+		end
+		-- use native lsp hover and signature help instead of lspsaga
+		vim.keymap.set("n", "<M-k>", vim.lsp.buf.hover, map_opts)
+		vim.keymap.set("i", "<M-k>", vim.lsp.buf.signature_help, map_opts)
 	end
 	lspconfig.util.default_config.capabilities = vim.tbl_deep_extend(
 		"force",
@@ -120,12 +131,13 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"williamboman/mason-lspconfig.nvim",
+			"nvimdev/lspsaga.nvim",
 		},
 		cmd = { "LspInfo", "LspInstall", "LspStart" },
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			-- lspconfig
-			setup_lspconfig()
+			setup_lspconfig({ set_keys = false })
 
 			-- mason-lspconfig
 			require("mason-lspconfig").setup({
@@ -136,5 +148,42 @@ return {
 				}),
 			})
 		end,
+	},
+	{
+		"nvimdev/lspsaga.nvim",
+		opts = {
+			definition = {
+				keys = {
+					edit = "o",
+					vsplit = "t",
+					split = "s",
+				},
+			},
+			outline = {
+				layout = "float",
+			},
+			lightbulb = {
+				sign = false,
+				virtual_text = true,
+			},
+			ui = {
+				code_action = "",
+			},
+		},
+		keys = {
+			{ "gd", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek Definition" },
+			{ "gy", "<cmd>Lspsaga peek_type_definition<cr>", desc = "Peek Type Definition" },
+			{ "gD", "<cmd>Lspsaga goto_definition<cr>", desc = "Goto Definition" },
+			{ "gY", "<cmd>Lspsaga goto_type_definition<cr>", desc = "Goto Type Definition" },
+			{ "<leader>ln", "<cmd>Lspsaga rename<cr>", desc = "Rename" },
+			{ "<leader>lN", "<cmd>Lspsaga rename ++project<cr>", desc = "Project Rename" },
+			{ "<leader>ld", "<cmd>Lspsaga show_line_diagnostics<cr>", desc = "Show Line Diagnostics" },
+			{ "<leader>lD", "<cmd>Lspsaga show_buf_diagnostics<cr>", desc = "Show Buffer Diagnostics" },
+			{ "<leader>la", "<cmd>Lspsaga code_action<cr>", desc = "Code Action" },
+			{ "<leader>lr", "<cmd>Lspsaga finder<cr>", desc = "Finder" },
+			{ "<leader>ll", "<cmd>Lspsaga outline<cr>", desc = "Outline" },
+			{ "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", desc = "Prev Diagnostic" },
+			{ "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Next Diagnostic" },
+		},
 	},
 }

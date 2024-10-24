@@ -20,13 +20,6 @@ return {
 		keys = { { [[<leader>u]], "<cmd>MundoToggle<CR>", desc = "Toggle Undo Tree" } },
 	},
 
-	-- aerial view
-	{
-		"stevearc/aerial.nvim",
-		opts = {},
-		keys = { { [[<leader>oa]], "<cmd>AerialToggle<CR>", desc = "Toggle Aerial" } },
-	},
-
 	-- Multi-select (VSCode Cmd/Ctrl+D)
 	{
 		"mg979/vim-visual-multi",
