@@ -44,18 +44,18 @@ shape = "Beam"
 size = 17
 
 [font.normal]
-family = "MesloLGSDZ Nerd Font Mono"
+family = "JetBrainsMono Nerd Font Mono"
 
 [font.bold]
-family = "MesloLGSDZ Nerd Font Mono"
+family = "JetBrainsMono Nerd Font Mono"
 style = "Bold"
 
 [font.italic]
-family = "MesloLGSDZ Nerd Font Mono"
+family = "JetBrainsMono Nerd Font Mono"
 style = "Italic"
 
 [font.bold_italic]
-family = "MesloLGSDZ Nerd Font Mono"
+family = "JetBrainsMono Nerd Font Mono"
 style = "Bold Italic"
 
 

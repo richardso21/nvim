@@ -99,9 +99,11 @@ return {
 			},
 		},
 		opts = {
+			ignore_filetypes = { "text", "markdown", "markdown_inline", "typst", "tex", "log" },
 			keymaps = {
 				accept_suggestion = "<M-l>",
 				accept_word = "<M-j>",
+				clear_suggestion = "<M-Backspace>",
 			},
 		},
 	},

@@ -1,11 +1,9 @@
--- borders on diagnostics
-vim.diagnostic.config({
-	float = { border = "rounded" },
-})
-
 vim.opt.signcolumn = "yes"
 local signs = { E = "", W = "", N = "", I = "" }
 vim.diagnostic.config({
+	-- borders on diagnostics
+	float = { border = "rounded" },
+	-- custom diagnostic signs
 	signs = {
 		numhl = {
 			[vim.diagnostic.severity.E] = "DiagnosticSignNumHLError",

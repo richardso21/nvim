@@ -109,13 +109,14 @@ return {
 				lualine_b = {
 					"branch",
 					{ get_arrow_status },
+				},
+				lualine_c = {
 					{
 						custom_fname,
 						file_status = false,
 						path = 1,
 					},
 				},
-				lualine_c = { "aerial" },
 				lualine_x = {
 					{
 						---@diagnostic disable-next-line: undefined-field
@@ -132,15 +133,23 @@ return {
 				},
 			},
 			inactive_sections = {
-				lualine_a = {},
-				lualine_b = { { "filename", path = 1 } },
+				lualine_a = {
+					{ get_arrow_status },
+				},
+				lualine_b = {
+					{
+						custom_fname,
+						file_status = false,
+						path = 1,
+					},
+				},
 				lualine_c = {},
 				lualine_x = {},
 				lualine_y = { "location" },
 				lualine_z = {},
 			},
 			tabline = {},
-			extensions = { "aerial", "lazy", "toggleterm", "mason", "mundo", "neo-tree", "quickfix" },
+			extensions = { "lazy", "toggleterm", "mason", "mundo", "neo-tree", "quickfix" },
 		})
 	end,
 }
