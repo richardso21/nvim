@@ -11,7 +11,14 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("rso.plugins", {
+require("lazy").setup({
+	{
+		import = "rso.plugins",
+		cond = function()
+			return not vim.g.vscode
+		end,
+	},
+}, {
 	defaults = { lazy = true },
 })
 
