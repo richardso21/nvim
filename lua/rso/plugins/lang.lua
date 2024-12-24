@@ -88,23 +88,25 @@ return {
 	{
 		"supermaven-inc/supermaven-nvim",
 		event = "InsertEnter",
+		cmd = { "SupermavenToggle", "SupermavenStart", "SupermavenStop" },
 		keys = {
 			{
 				"<leader>oc",
 				function()
-					require("supermaven-nvim.api").toggle()
+					vim.cmd("SupermavenToggle")
 					print("AI Autocomplete: " .. tostring(require("supermaven-nvim.api").is_running()))
 				end,
 				desc = "toggle AI auto-suggestions",
 			},
 		},
 		opts = {
-			ignore_filetypes = { "text", "markdown", "markdown_inline", "typst", "tex", "log" },
 			keymaps = {
 				accept_suggestion = "<M-l>",
 				accept_word = "<M-j>",
 				clear_suggestion = "<M-Backspace>",
 			},
+			-- disable for big files
+			condition = CurrentBufferIsBigFile,
 		},
 	},
 }
