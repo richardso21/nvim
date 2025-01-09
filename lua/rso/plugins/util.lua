@@ -35,12 +35,6 @@ return {
 		event = "BufReadPost",
 	},
 
-	-- surround
-	{
-		"tpope/vim-surround",
-		event = "BufReadPost",
-	},
-
 	-- Fix cursor position changing on buffer switch
 	{
 		"BranimirE/fix-auto-scroll.nvim",

@@ -19,11 +19,6 @@ vim.keymap.set("n", "<leader>W", function()
 	vscode.action("workbench.action.files.saveWithoutFormatting")
 end)
 
--- tab and s-tab behavior
-vim.keymap.set("v", "<tab>", ">")
-vim.keymap.set("v", "<s-tab>", "<")
-vim.keymap.set("i", "<s-tab>", "<C-d>")
-
 -- Creating windows
 vim.keymap.set("n", "<leader>nt", function()
 	vscode.action("workbench.action.splitEditor")
@@ -34,18 +29,11 @@ end)
 
 -- toggle wrapping
 vim.keymap.set("n", "<leader>ow", function()
-	vim.wo.wrap = not vim.wo.wrap
 	vscode.action("editor.action.toggleWordWrap")
-	print("wrap: " .. tostring(vim.wo.wrap))
 end)
 
--- better up/down (from LazyVim)
-vim.keymap.set({ "n", "x" }, "j", "gj", { desc = "Down", silent = true })
-vim.keymap.set({ "n", "x" }, "k", "gk", { desc = "Up", silent = true })
-vim.keymap.set({ "n", "x" }, "<Down>", "gj", { desc = "Down", silent = true })
-vim.keymap.set({ "n", "x" }, "<Up>", "gk", { desc = "Up", silent = true })
-
--- better indenting
+-- tab and s-tab behavior; better indenting
+vim.keymap.set("i", "<s-tab>", "<C-d>")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<S-tab>", "<gv")
@@ -60,21 +48,25 @@ vim.keymap.set("n", "<leader>lr", function()
 	vscode.call("editor.action.referenceSearch.trigger")
 end)
 
-vim.keymap.set("n", "<M-k>", function()
-	vscode.call("editor.action.showHover")
-end)
-
-vim.keymap.set("n", "<leader>m", function()
-	-- comment out current line
-	vscode.call("editor.action.commentLine")
-end)
-vim.keymap.set("v", "m", function()
-	-- comment out selection
-	vscode.call("editor.action.commentLine")
-	-- send esc to exit visual mode
-end)
-
 vim.keymap.set("n", "<leader>e", function()
 	-- show file explorer
-	vscode.action("workbench.view.explorer")
+	vscode.call("workbench.view.explorer")
+end)
+
+-- move between buffers/tabs
+vim.keymap.set("n", "J", function()
+	vscode.call("workbench.action.previousEditorInGroup")
+end)
+
+vim.keymap.set("n", "K", function()
+	vscode.call("workbench.action.nextEditorInGroup")
+end)
+
+-- swap buffers/tabs
+vim.keymap.set("n", "H", function()
+	vscode.call("workbench.action.moveEditorLeftInGroup")
+end)
+
+vim.keymap.set("n", "L", function()
+	vscode.call("workbench.action.moveEditorRightInGroup")
 end)

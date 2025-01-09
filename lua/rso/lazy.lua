@@ -18,6 +18,13 @@ require("lazy").setup({
 			return not vim.g.vscode
 		end,
 	},
+	-- plugins for vscode-neovim
+	{
+		import = "rso.vscode.plugins",
+		cond = function()
+			return vim.g.vscode
+		end,
+	},
 }, {
 	defaults = { lazy = true },
 })
