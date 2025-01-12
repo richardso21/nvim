@@ -70,3 +70,9 @@ end)
 vim.keymap.set("n", "L", function()
 	vscode.call("workbench.action.moveEditorRightInGroup")
 end)
+
+-- comments
+vim.keymap.set("n", "<leader>m", "<Plug>VSCodeCommentaryLine")
+vim.keymap.set("v", "m", "<Plug>VSCodeCommentary", {
+	nowait = true, -- prevents the keymap from waiting for a mark to be set
+})
