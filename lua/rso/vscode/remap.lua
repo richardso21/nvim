@@ -76,3 +76,7 @@ vim.keymap.set("n", "<leader>m", "<Plug>VSCodeCommentaryLine")
 vim.keymap.set("v", "m", "<Plug>VSCodeCommentary", {
 	nowait = true, -- prevents the keymap from waiting for a mark to be set
 })
+
+-- revert gq keybindings made by vscode-neovim
+vim.keymap.del({ "n", "x" }, "gq")
+vim.keymap.del({ "n" }, "gqq")

@@ -23,18 +23,6 @@ return {
 		keys = { { [[<leader>u]], "<cmd>MundoToggle<CR>", desc = "Toggle Undo Tree" } },
 	},
 
-	-- Multi-select (VSCode Cmd/Ctrl+D)
-	{
-		"mg979/vim-visual-multi",
-		init = function()
-			vim.g.VM_maps = {
-				["Add Cursor Down"] = "<C-S-Down>",
-				["Add Cursor Up"] = "<C-S-Up>",
-			}
-		end,
-		event = "BufReadPost",
-	},
-
 	-- Fix cursor position changing on buffer switch
 	{
 		"BranimirE/fix-auto-scroll.nvim",
