@@ -80,3 +80,16 @@ vim.keymap.set("v", "m", "<Plug>VSCodeCommentary", {
 -- revert gq keybindings made by vscode-neovim
 vim.keymap.del({ "n", "x" }, "gq")
 vim.keymap.del({ "n" }, "gqq")
+
+-- diagnostic keybindings (use vscode diagnostics instead)
+vim.keymap.set("n", "]d", function()
+	vscode.call("editor.action.marker.next")
+end)
+
+vim.keymap.set("n", "[d", function()
+	vscode.call("editor.action.marker.prev")
+end)
+
+vim.keymap.set("n", "<leader>ld", function()
+	vscode.call("workbench.actions.view.problems")
+end)
