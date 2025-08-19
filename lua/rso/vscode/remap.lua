@@ -48,9 +48,23 @@ vim.keymap.set("n", "<leader>lr", function()
 	vscode.call("editor.action.referenceSearch.trigger")
 end)
 
+vim.keymap.set("n", "<leader>ld", function()
+  vscode.call("editor.action.peekDefinition")
+end)
+
+vim.keymap.set("n", "<leader>ll", function()
+  -- select symbols from breadcrumb menu
+  vscode.call("breadcrumbs.focusAndSelect")
+end)
+
 vim.keymap.set("n", "<leader>e", function()
 	-- show file explorer
 	vscode.call("workbench.view.explorer")
+end)
+
+vim.keymap.set("n", "<leader>E", function()
+	-- show file explorer (focus on current file)
+	vscode.call("workbench.files.action.showActiveFileInExplorer")
 end)
 
 -- move between buffers/tabs
@@ -90,6 +104,6 @@ vim.keymap.set("n", "[d", function()
 	vscode.call("editor.action.marker.prev")
 end)
 
-vim.keymap.set("n", "<leader>ld", function()
+vim.keymap.set("n", "<leader>lp", function()
 	vscode.call("workbench.actions.view.problems")
 end)
